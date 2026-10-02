@@ -7,7 +7,7 @@ export function ProjectThumb({ project, title }: { project: Project; title: stri
   const height = project.size === 'wide' ? 'h-[200px] md:h-[280px]' : 'h-[180px] md:h-[200px]'
 
   if (project.image) {
-    return <img src={project.image} alt={title} loading="lazy" className={`${height} w-full border-b border-line object-cover`} />
+    return <img src={project.image} alt={title} loading="lazy" className={`${height} w-full border-b border-line object-cover object-top`} />
   }
 
   if (project.thumb === 'endpoints') {
