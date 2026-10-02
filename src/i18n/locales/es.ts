@@ -229,10 +229,10 @@ const es = {
       label: 'Caso de estudio · Proyecto final Henry',
       intro:
         'Billetera digital para personas que trabajan y se mueven entre distintos países: saldo, conversión de monedas, transferencias y depósitos en una misma plataforma. Proyecto grupal donde coordiné el frontend.',
-      roleValue: 'Líder de frontend',
+      roleValue: 'Coordinación de frontend',
       teamValue: '4 personas · 2 front, 2 back',
       yearValue: '2026',
-      heroShot: 'dashboard de NomaPay en desktop + mobile',
+      heroAlt: 'Dashboard de NomaPay en desktop y en mobile',
       whatEyebrow: '01 — Qué hice',
       whatTitleStart: 'Del nombre al último',
       whatTitleEm: 'pull request',
@@ -305,7 +305,12 @@ const es = {
         },
       ],
       screensEyebrow: '04 — Pantallas',
-      screens: ['Dashboard', 'Transferir', 'Historial de movimientos', 'Ajustes'],
+      screens: [
+        { title: 'Landing', caption: 'Página pública con la propuesta de valor y el acceso a la cuenta.' },
+        { title: 'Convertir monedas', caption: 'Conversión entre ARS, USD y BRL con la tasa y la comisión a la vista.' },
+        { title: 'Transferir', caption: 'Flujo en tres pasos: destinatario, monto y confirmación.' },
+        { title: 'Resumen semanal', caption: 'Entradas, salidas y cambios por día, filtrados por moneda.' },
+      ],
     },
   },
 

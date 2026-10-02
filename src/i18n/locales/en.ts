@@ -231,10 +231,10 @@ const en: Translation = {
       label: 'Case study · Henry final project',
       intro:
         'A digital wallet for people who work and move between countries: balance, currency conversion, transfers and deposits in a single platform. A group project where I coordinated the frontend.',
-      roleValue: 'Frontend lead',
+      roleValue: 'Frontend coordinator',
       teamValue: '4 people · 2 front, 2 back',
       yearValue: '2026',
-      heroShot: 'NomaPay dashboard on desktop + mobile',
+      heroAlt: 'NomaPay dashboard on desktop and mobile',
       whatEyebrow: '01 — What I did',
       whatTitleStart: 'From the name to the last',
       whatTitleEm: 'pull request',
@@ -307,7 +307,12 @@ const en: Translation = {
         },
       ],
       screensEyebrow: '04 — Screens',
-      screens: ['Dashboard', 'Transfer', 'Transaction history', 'Settings'],
+      screens: [
+        { title: 'Landing page', caption: 'Public page with the value proposition and account access.' },
+        { title: 'Currency exchange', caption: 'Conversion between ARS, USD and BRL with the rate and fee upfront.' },
+        { title: 'Transfer', caption: 'A three-step flow: recipient, amount and confirmation.' },
+        { title: 'Weekly summary', caption: 'Income, expenses and exchanges per day, filtered by currency.' },
+      ],
     },
   },
 

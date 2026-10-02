@@ -3,16 +3,12 @@ import { useTranslation } from 'react-i18next'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { Logo } from '../components/layout/Navbar'
 import { Contact } from '../components/sections/Contact'
+import { BrowserFrame } from '../components/ui/BrowserFrame'
+import { DemoMedia } from '../components/ui/DemoMedia'
 import { Icon } from '../components/ui/Icon'
+import { PhoneFrame } from '../components/ui/PhoneFrame'
+import { nomapayMedia } from '../data/media/nomapay'
 import { getProject, projects } from '../data/projects'
-
-function Placeholder({ label, className = '' }: { label: string; className?: string }) {
-  return (
-    <div className={`flex items-center justify-center rounded-xl border border-line bg-sand ${className}`}>
-      <span className="font-mono text-xs text-subtle">[{label}]</span>
-    </div>
-  )
-}
 
 /** Por ahora solo NomaPay tiene caso de estudio; el resto redirige a la home. */
 export default function CaseStudy() {
@@ -88,11 +84,22 @@ export default function CaseStudy() {
           </dl>
         </section>
 
-        {/* Captura principal */}
+        {/* Captura principal: desktop + mobile */}
         <div className="container-site">
-          <div className="flex h-[260px] items-center justify-center rounded-[14px] bg-night md:h-[640px]">
-            <span className="font-mono text-xs text-night-muted md:text-sm">[{c.heroShot}]</span>
-          </div>
+          <figure className="relative m-0 overflow-hidden rounded-[14px] bg-night px-4 pt-6 pb-0 md:px-14 md:pt-14">
+            <div
+              className="pointer-events-none absolute inset-x-0 top-0 h-2/3 bg-[radial-gradient(ellipse_at_top,rgba(155,216,181,0.12),transparent_70%)]"
+              aria-hidden="true"
+            />
+            <BrowserFrame url="nomapay · dashboard" className="relative w-full rounded-b-none border-b-0 md:w-[88%]">
+              <img src={nomapayMedia.heroDesktop} alt={c.heroAlt} width={1600} height={886} className="block w-full" />
+            </BrowserFrame>
+            <div className="absolute right-4 bottom-4 w-[28%] max-w-[230px] md:right-14 md:bottom-10 md:w-[22%]">
+              <PhoneFrame>
+                <img src={nomapayMedia.heroMobile} alt="" width={638} height={1398} className="block w-full" />
+              </PhoneFrame>
+            </div>
+          </figure>
         </div>
 
         {/* Qué hice */}
@@ -177,11 +184,23 @@ export default function CaseStudy() {
         {/* Pantallas */}
         <section className="container-site flex flex-col gap-6 pb-20">
           <h2 className="m-0 font-mono text-[13px] font-normal text-forest">{c.screensEyebrow}</h2>
-          <ul className="m-0 grid list-none grid-cols-2 gap-4 p-0 md:gap-6 lg:grid-cols-4">
-            {c.screens.map((screen) => (
-              <li key={screen} className="flex flex-col gap-3">
-                <Placeholder label={t('caseStudy.screenshotPending')} className="h-[280px] md:h-[420px]" />
-                <span className="text-[15px] font-medium">{screen}</span>
+          <ul className="m-0 grid list-none grid-cols-1 gap-x-6 gap-y-10 p-0 md:grid-cols-2">
+            {c.screens.map((screen, i) => (
+              <li key={screen.title}>
+                <figure className="m-0 flex flex-col gap-4">
+                  <BrowserFrame>
+                    <DemoMedia
+                      alt={screen.title}
+                      image={nomapayMedia.screens[i].image}
+                      video={nomapayMedia.screens[i].video}
+                      className="aspect-[16/9] object-cover object-top"
+                    />
+                  </BrowserFrame>
+                  <figcaption className="flex flex-col gap-1">
+                    <span className="text-[17px] font-medium">{screen.title}</span>
+                    <span className="text-[15px] leading-relaxed text-muted">{screen.caption}</span>
+                  </figcaption>
+                </figure>
               </li>
             ))}
           </ul>
