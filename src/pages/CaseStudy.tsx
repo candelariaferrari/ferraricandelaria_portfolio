@@ -49,7 +49,10 @@ export default function CaseStudy() {
             <Logo />
           </Link>
           <span className="hidden font-mono text-[13px] text-muted sm:inline">
-            {t('caseStudy.counter', { current: project.number, total: String(projects.length).padStart(2, '0') })}
+            {t('caseStudy.counter', {
+              current: String(index + 1).padStart(2, '0'),
+              total: String(caseStudies.length).padStart(2, '0'),
+            })}
           </span>
         </div>
       </header>
