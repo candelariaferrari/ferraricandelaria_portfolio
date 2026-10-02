@@ -15,10 +15,11 @@ const en: Translation = {
 
   hero: {
     eyebrow: '// Full Stack Developer · Frontend first · Córdoba, AR',
-    titleStart: 'From Figma to production,',
-    titleEm: 'and everything behind it.',
+    titleStart: 'From design to code,',
+    titleMid: 'from code',
+    titleEm: 'to production.',
     intro:
-      "I'm Cande, a Full Stack Developer with a frontend focus. Almost five years building product in Angular; today I build with React, TypeScript, Node and PostgreSQL. And since I come from graphic design, I speak the same language as the design team.",
+      "I'm Cande, a Full Stack Developer with a frontend focus. I build thoughtful interfaces and understand what happens behind every screen.",
     ctaProjects: 'See projects',
     ctaCv: 'Download CV',
     photoAlt: 'Photo of Candelaria Ferrari',
@@ -36,10 +37,22 @@ const en: Translation = {
   },
 
   metrics: [
-    { value: '~5 yrs', label: 'of frontend in production (Agrohub, Pagos360)' },
-    { value: '6', label: 'full stack projects at Henry' },
-    { value: '30+', label: 'Figma wireframes for NomaPay' },
-    { value: '4', label: 'stack layers: frontend, backend, data and cloud' },
+    {
+      title: 'Frontend in production',
+      body: 'Almost 5 years building digital products, mainly with Angular.',
+    },
+    {
+      title: 'Design + development',
+      body: 'My Graphic Design background shapes how I think about interfaces, components and experiences.',
+    },
+    {
+      title: 'Modern Full Stack',
+      body: 'Recent experience with React, TypeScript, Node.js, PostgreSQL and Firebase.',
+    },
+    {
+      title: 'From idea to production',
+      body: 'I care about understanding the whole product, not just implementing a screen.',
+    },
   ],
 
   projects: {
@@ -125,7 +138,7 @@ const en: Translation = {
     titleStart: 'From Figma',
     titleEm: 'to deploy',
     intro:
-      'My role is to build. But I come from graphic design, so when I get a Figma file I read it like a designer: I spot missing states, suggest improvements and bring it to code with care for the details.',
+      'My role is to build. When I get a Figma file I read it with a designer\'s eye: I spot missing states, suggest improvements and bring it to code with care for every detail.',
     steps: [
       {
         title: 'I read the design',

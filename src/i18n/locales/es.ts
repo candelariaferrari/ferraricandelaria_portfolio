@@ -13,10 +13,11 @@ const es = {
 
   hero: {
     eyebrow: '// Full Stack Developer · Frontend first · Córdoba, AR',
-    titleStart: 'Del Figma a producción,',
-    titleEm: 'con todo lo que hay detrás.',
+    titleStart: 'Del diseño al código,',
+    titleMid: 'y del código',
+    titleEm: 'a producción.',
     intro:
-      'Soy Cande, Full Stack Developer con foco en frontend. Casi cinco años haciendo producto en Angular, hoy construyo con React, TypeScript, Node y PostgreSQL. Y como vengo del diseño gráfico, hablo el mismo idioma que el equipo de diseño.',
+      'Soy Cande, Full Stack Developer con foco en frontend. Construyo interfaces cuidadas y entiendo lo que pasa detrás de cada pantalla.',
     ctaProjects: 'Ver proyectos',
     ctaCv: 'Descargar CV',
     photoAlt: 'Foto de Candelaria Ferrari',
@@ -34,10 +35,22 @@ const es = {
   },
 
   metrics: [
-    { value: '~5 años', label: 'de frontend en producción (Agrohub, Pagos360)' },
-    { value: '6', label: 'proyectos full stack en Henry' },
-    { value: '30+', label: 'wireframes en Figma para NomaPay' },
-    { value: '4', label: 'capas del stack: frontend, backend, datos y cloud' },
+    {
+      title: 'Frontend en producción',
+      body: 'Casi 5 años construyendo productos digitales, principalmente con Angular.',
+    },
+    {
+      title: 'Diseño + desarrollo',
+      body: 'Mi formación en Diseño Gráfico influye en cómo pienso interfaces, componentes y experiencias.',
+    },
+    {
+      title: 'Full Stack moderno',
+      body: 'Experiencia reciente con React, TypeScript, Node.js, PostgreSQL y Firebase.',
+    },
+    {
+      title: 'De la idea a producción',
+      body: 'Me interesa entender el producto completo, no solo implementar una pantalla.',
+    },
   ],
 
   projects: {
@@ -123,7 +136,7 @@ const es = {
     titleStart: 'Del Figma',
     titleEm: 'al deploy',
     intro:
-      'Mi rol es construir. Pero vengo del diseño gráfico, así que cuando recibo un Figma lo leo como diseñadora: detecto estados que faltan, propongo mejoras y lo llevo a código fiel al detalle.',
+      'Mi rol es construir. Cuando recibo un Figma lo leo con ojo de diseño: detecto estados que faltan, propongo mejoras y lo llevo a código cuidando cada detalle.',
     steps: [
       {
         title: 'Leo el diseño',
