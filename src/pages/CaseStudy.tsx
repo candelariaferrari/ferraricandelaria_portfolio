@@ -102,6 +102,7 @@ export default function CaseStudy() {
             <h2 className="m-0 font-serif text-4xl leading-[1.05] font-normal tracking-[-0.02em] md:text-[2.75rem]">
               {c.whatTitleStart} <em>{c.whatTitleEm}</em>
             </h2>
+            <p className="m-0 mt-2 text-base leading-relaxed text-ink-soft">{c.whatIntro}</p>
           </div>
           <ul className="m-0 grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
             {c.what.map((w) => (
@@ -120,6 +121,7 @@ export default function CaseStudy() {
               <div className="flex flex-col gap-3">
                 <span className="font-mono text-[13px] text-mint">{c.archEyebrow}</span>
                 <h2 className="m-0 font-serif text-4xl font-normal tracking-[-0.02em] md:text-[2.75rem]">{c.archTitle}</h2>
+                <p className="m-0 max-w-[560px] text-base leading-relaxed text-night-text">{c.archIntro}</p>
               </div>
               <span className="font-mono text-[13px] text-night-muted">{c.archNote}</span>
             </div>
@@ -130,6 +132,7 @@ export default function CaseStudy() {
                     <span className="font-mono text-[11px] text-mint">{node.host}</span>
                     <span className="text-xl font-medium">{node.title}</span>
                     <span className="font-mono text-xs leading-relaxed text-night-muted">{node.tech}</span>
+                    <span className="mt-1 text-sm leading-relaxed text-night-text">{node.detail}</span>
                   </div>
                   {i < c.archEdges.length && (
                     <div className="flex items-center justify-center gap-2 px-2 py-3 font-mono text-[11px] text-night-muted lg:w-[150px] lg:flex-col">

@@ -66,13 +66,30 @@ export function ArchitectureDiagram() {
           <div className="pl-6 text-night-muted">
             <DownArrow />
           </div>
-          <Node title={a.db} tech={a.dbTech} />
+          <Node
+            title={
+              <>
+                {a.db}
+                <span className="ml-2 font-mono text-[11px] text-night-muted">{a.team}</span>
+              </>
+            }
+            tech={a.dbTech}
+          />
         </div>
         <div className="flex flex-col gap-3.5">
           <div className="pl-6 text-night-muted">
             <DownArrow />
           </div>
-          <Node title={a.mailing} tech={a.mailingTech} dashed />
+          <Node
+            title={
+              <>
+                {a.mailing}
+                <span className="ml-2 font-mono text-[11px] text-night-muted">{a.team}</span>
+              </>
+            }
+            tech={a.mailingTech}
+            dashed
+          />
         </div>
       </div>
     </figure>
