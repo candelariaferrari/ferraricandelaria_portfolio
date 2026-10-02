@@ -114,7 +114,7 @@ const en: Translation = {
         meta: 'Module 3',
         title: 'Inside Out Chat',
         description:
-          'A vanilla JavaScript SPA: a chat where each emotion replies with its own personality, powered by the Gemini API.',
+          'A framework-free vanilla JavaScript SPA: a chat where each emotion replies with its own personality using Gemini, with the API key protected in a serverless function.',
       },
       'api-swagger': {
         meta: 'Module 2',
@@ -212,7 +212,7 @@ const en: Translation = {
       { title: 'Angular: zero to expert · Udemy', detail: '2025 · Signals, SSR, testing, i18n' },
       { title: 'Full Stack · Digital House', detail: '2021 — 2022' },
       { title: 'JavaScript + Web Development · Coderhouse', detail: '2019 — 2020' },
-      { title: 'Graphic Design · Universidad Blas Pascal', detail: '2011 — 2015' },
+      { title: 'Graphic Design · Universidad Blas Pascal', detail: '2011 — 2014' },
     ],
   },
 

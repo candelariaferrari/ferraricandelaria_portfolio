@@ -112,7 +112,7 @@ const es = {
         meta: 'Módulo 3',
         title: 'Intensamente Chat',
         description:
-          'SPA en JavaScript puro: un chat donde cada emoción responde con su personalidad, usando la API de Gemini.',
+          'SPA en JavaScript puro, sin frameworks: un chat donde cada emoción responde con su propia personalidad usando Gemini, con la API key protegida en una función serverless.',
       },
       'api-swagger': {
         meta: 'Módulo 2',
@@ -210,7 +210,7 @@ const es = {
       { title: 'Angular: de cero a experto · Udemy', detail: '2025 · Signals, SSR, testing, i18n' },
       { title: 'Full Stack · Digital House', detail: '2021 — 2022' },
       { title: 'JavaScript + Desarrollo web · Coderhouse', detail: '2019 — 2020' },
-      { title: 'Diseño Gráfico · Universidad Blas Pascal', detail: '2011 — 2015' },
+      { title: 'Diseño Gráfico · Universidad Blas Pascal', detail: '2011 — 2014' },
     ],
   },
 

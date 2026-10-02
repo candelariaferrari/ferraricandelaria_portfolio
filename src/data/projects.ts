@@ -1,5 +1,6 @@
 import ecommerceThumb from '../assets/projects/ecommerce/home-desktop.webp'
 import forTodayThumb from '../assets/projects/for-today/summary-desktop.webp'
+import intensamenteThumb from '../assets/projects/intensamente/mockup.webp'
 import type { Project } from './types'
 
 // TODO: completar los links que faltan (live = deploy, repo = GitHub)
@@ -45,9 +46,13 @@ export const projects: Project[] = [
     slug: 'intensamente',
     number: '04',
     size: 'compact',
+    image: intensamenteThumb,
     layers: { ui: 'me', api: 'me', db: 'none', cloud: 'me' },
-    stack: ['Vanilla JS', 'Gemini API', 'Vercel'],
-    links: {},
+    stack: ['Vanilla JS', 'Gemini API', 'Vercel Functions', 'Vitest'],
+    links: {
+      live: 'https://proyecto-m3-candelaria-ferrari.vercel.app/',
+      repo: 'https://github.com/candelariaferrari/ProyectoM3_CandelariaFerrari',
+    },
   },
   {
     slug: 'api-swagger',
