@@ -1,9 +1,12 @@
+import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
 import { projects } from '../../data/projects'
 import { FeaturedProject } from '../projects/FeaturedProject'
 import { ProjectCard } from '../projects/ProjectCard'
 import { LayersLegend } from '../ui/LayerBadges'
 import { SectionHeading } from '../ui/SectionHeading'
+import { Reveal } from '../motion/Reveal'
+import { fadeUp, stagger, viewport } from '../motion/variants'
 
 export function Projects() {
   const { t } = useTranslation()
@@ -20,24 +23,44 @@ export function Projects() {
           titleStart={t('projects.titleStart')}
           titleEm={t('projects.titleEm')}
         />
-        <LayersLegend />
+        <Reveal>
+          <LayersLegend />
+        </Reveal>
       </div>
 
       {featured.map((p) => (
-        <FeaturedProject key={p.slug} project={p} />
+        <Reveal key={p.slug}>
+          <FeaturedProject project={p} />
+        </Reveal>
       ))}
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <motion.div
+        className="grid grid-cols-1 gap-6 md:grid-cols-2"
+        variants={stagger(0.12)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewport}
+      >
         {wide.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+          <motion.div key={p.slug} variants={fadeUp} className="flex">
+            <ProjectCard project={p} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <motion.div
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+        variants={stagger(0.12)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewport}
+      >
         {compact.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+          <motion.div key={p.slug} variants={fadeUp} className="flex">
+            <ProjectCard project={p} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }

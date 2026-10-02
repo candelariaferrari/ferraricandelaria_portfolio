@@ -1,7 +1,10 @@
+import { motion } from 'motion/react'
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { Logo } from '../components/layout/Navbar'
+import { Reveal } from '../components/motion/Reveal'
+import { fadeUp, stagger } from '../components/motion/variants'
 import { Contact } from '../components/sections/Contact'
 import { BrowserFrame } from '../components/ui/BrowserFrame'
 import { DemoMedia } from '../components/ui/DemoMedia'
@@ -59,15 +62,21 @@ export default function CaseStudy() {
 
       <main>
         {/* Título */}
-        <section className="container-site grid grid-cols-1 items-end gap-10 pt-14 pb-12 md:pt-24 md:pb-16 lg:grid-cols-12 lg:gap-6">
-          <div className="flex flex-col gap-6 lg:col-span-8">
+        <motion.section
+          key={project.slug}
+          className="container-site grid grid-cols-1 items-end gap-10 pt-14 pb-12 md:pt-24 md:pb-16 lg:grid-cols-12 lg:gap-6"
+          variants={stagger(0.12, 0.05)}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={fadeUp} className="flex flex-col gap-6 lg:col-span-8">
             <span className="font-mono text-sm text-forest">{c.label}</span>
             <h1 className="m-0 font-serif text-7xl leading-[0.92] font-normal tracking-[-0.045em] md:text-[7.5rem]">
               {c.title}
             </h1>
             <p className="m-0 max-w-[680px] text-lg leading-normal text-ink-soft md:text-[22px]">{c.intro}</p>
-          </div>
-          <dl className="m-0 grid grid-cols-2 gap-6 lg:col-span-4">
+          </motion.div>
+          <motion.dl variants={fadeUp} className="m-0 grid grid-cols-2 gap-6 lg:col-span-4">
             {meta.map((m) => (
               <div key={m.term} className="flex flex-col gap-1.5">
                 <dt className="font-mono text-xs text-muted">{m.term}</dt>
@@ -90,11 +99,17 @@ export default function CaseStudy() {
                 {!project.links.live && !project.links.repo && <span className="text-muted">—</span>}
               </dd>
             </div>
-          </dl>
-        </section>
+          </motion.dl>
+        </motion.section>
 
         {/* Captura principal: desktop + mobile */}
-        <div className="container-site">
+        <motion.div
+          key={`hero-${project.slug}`}
+          className="container-site"
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+        >
           <figure className="relative m-0 overflow-hidden rounded-[14px] bg-night px-4 pt-6 pb-0 md:px-14 md:pt-14">
             <div
               className="pointer-events-none absolute inset-x-0 top-0 h-2/3 bg-[radial-gradient(ellipse_at_top,rgba(155,216,181,0.12),transparent_70%)]"
@@ -109,7 +124,7 @@ export default function CaseStudy() {
               </PhoneFrame>
             </div>
           </figure>
-        </div>
+        </motion.div>
 
         {/* Qué hice */}
         <section className="container-site grid grid-cols-1 gap-10 pt-20 pb-16 md:pt-[110px] md:pb-20 lg:grid-cols-12 lg:gap-6">
@@ -131,7 +146,7 @@ export default function CaseStudy() {
         </section>
 
         {/* Arquitectura */}
-        <div className="container-site">
+        <Reveal className="container-site">
           <section className="flex flex-col gap-10 rounded-[14px] bg-night p-6 text-paper md:p-16">
             <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div className="flex flex-col gap-3">
@@ -167,7 +182,7 @@ export default function CaseStudy() {
               <span className="text-[15px] text-night-text">{c.archExtra}</span>
             </div>
           </section>
-        </div>
+        </Reveal>
 
         {/* Decisiones */}
         <section className="container-site grid grid-cols-1 gap-10 pt-20 pb-16 md:pt-[110px] md:pb-20 lg:grid-cols-12 lg:gap-6">

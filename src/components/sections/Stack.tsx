@@ -1,6 +1,8 @@
+import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
 import { stackGroups } from '../../data/stack'
 import { CodeComment } from '../ui/CodeComment'
+import { fadeUp, stagger, viewport } from '../motion/variants'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function Stack() {
@@ -20,9 +22,15 @@ export function Stack() {
           <CodeComment tone="dark" lines={t('stack.comment', { returnObjects: true })} className="lg:max-w-[460px]" />
         </div>
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1fr]">
+        <motion.div
+          className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1fr]"
+          variants={stagger(0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           {stackGroups.map((group) => (
-            <div key={group.id} className="flex flex-col">
+            <motion.div key={group.id} variants={fadeUp} className="flex flex-col">
               <h3 className="m-0 border-b border-paper pb-3.5 font-mono text-xs font-normal text-mint">
                 {t(`stack.groups.${group.id}`)}
               </h3>
@@ -33,9 +41,9 @@ export function Stack() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

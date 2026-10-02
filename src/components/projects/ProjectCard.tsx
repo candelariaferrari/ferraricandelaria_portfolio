@@ -10,7 +10,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const wide = project.size === 'wide'
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-[14px] border border-line bg-card">
+    <article className="group flex w-full flex-col overflow-hidden rounded-[14px] border border-line bg-card transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(17,23,20,0.25)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       <ProjectThumb project={project} title={item.title} />
       <div className={`flex flex-1 flex-col gap-4 ${wide ? 'p-6 md:p-8' : 'p-6 md:p-7'}`}>
         <div className="flex flex-wrap items-center justify-between gap-3">

@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
+import { motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
+import { fadeUp, stagger, viewport } from '../motion/variants'
 
 function DownArrow() {
   return (
@@ -31,9 +33,17 @@ export function ArchitectureDiagram() {
   const a = t('projects.arch', { returnObjects: true })
 
   return (
-    <figure className="m-0 flex flex-col gap-3.5" aria-label={t('projects.architecture')}>
-      <figcaption className="font-mono text-xs text-night-muted">{t('projects.architecture')}</figcaption>
+    <motion.figure
+      className="m-0 flex flex-col gap-3.5"
+      aria-label={t('projects.architecture')}
+      variants={stagger(0.15, 0.2)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewport}
+    >
+      <motion.figcaption variants={fadeUp} className="font-mono text-xs text-night-muted">{t('projects.architecture')}</motion.figcaption>
 
+      <motion.div variants={fadeUp}>
       <Node
         title={
           <>
@@ -44,12 +54,14 @@ export function ArchitectureDiagram() {
         tech={a.clientTech}
         tag="Vercel"
       />
+      </motion.div>
 
-      <div className="flex items-center gap-2.5 pl-6 font-mono text-xs text-night-muted">
+      <motion.div variants={fadeUp} className="flex items-center gap-2.5 pl-6 font-mono text-xs text-night-muted">
         <DownArrow />
         {a.transport}
-      </div>
+      </motion.div>
 
+      <motion.div variants={fadeUp}>
       <Node
         title={
           <>
@@ -60,8 +72,9 @@ export function ArchitectureDiagram() {
         tech={a.apiTech}
         tag="Railway"
       />
+      </motion.div>
 
-      <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+      <motion.div variants={fadeUp} className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
         <div className="flex flex-col gap-3.5">
           <div className="pl-6 text-night-muted">
             <DownArrow />
@@ -91,7 +104,7 @@ export function ArchitectureDiagram() {
             dashed
           />
         </div>
-      </div>
-    </figure>
+      </motion.div>
+    </motion.figure>
   )
 }
