@@ -68,24 +68,35 @@ const en: Translation = {
     screenshotPending: 'screenshot coming soon',
     architecture: 'architecture · who did what',
     arch: {
-      client: 'Client · SPA',
-      clientTech: 'React + TS + Tailwind v4',
+      client: 'Client · Frontend',
+      clientTech: 'React + TS + Vite + Tailwind v4',
       mine: 'my part',
       api: 'REST API',
-      apiTech: 'Express + TypeScript',
+      apiTech: 'Express + TypeScript · Swagger',
       backendTeam: 'backend team',
-      transport: 'REST · JWT + refresh token (axios interceptor)',
+      team: 'team',
+      transport: 'REST · JWT + refresh token · Axios interceptors',
       db: 'PostgreSQL',
-      dbTech: 'users · accounts · transactions',
-      mailing: 'Mailing',
+      dbTech: 'Sequelize · users · accounts · transactions',
+      mailing: 'Emails',
       mailingTech: 'Serverless → AWS SES',
+    },
+    featured: {
+      subtitle: 'A digital wallet for travelers and digital nomads',
+      contributionsTitle: 'My contribution',
+      contributions: [
+        { area: 'UI & Design', items: 'Visual identity · Design System · Responsive' },
+        { area: 'Frontend', items: 'Component architecture · authentication · API integration' },
+        { area: 'Team', items: 'Git · Pull Requests · sprints' },
+      ],
+      techTitle: 'Tech stack',
     },
     items: {
       nomapay: {
         meta: 'Final group project · team of 4',
         title: 'NomaPay',
         description:
-          'A digital wallet for travelers and digital nomads: transfers, currency exchange and deposits. Four of us built it; I led the frontend: brand identity, design system, component architecture, API integration, Git workflow and sprints.',
+          'Manage your balance, convert currencies, transfer and deposit from a single platform. In a team of four, I coordinated the frontend: visual identity, design system, component architecture and API integration.',
       },
       ecommerce: {
         meta: 'Module 5',
@@ -219,7 +230,7 @@ const en: Translation = {
     nomapay: {
       label: 'Case study · Henry final project',
       intro:
-        'A digital wallet for people who live on the move: transfer, exchange currency and deposit from one place. A group project where I led the frontend.',
+        'A digital wallet for people who work and move between countries: balance, currency conversion, transfers and deposits in a single platform. A group project where I coordinated the frontend.',
       roleValue: 'Frontend lead',
       teamValue: '4 people · 2 front, 2 back',
       yearValue: '2026',
@@ -227,31 +238,49 @@ const en: Translation = {
       whatEyebrow: '01 — What I did',
       whatTitleStart: 'From the name to the last',
       whatTitleEm: 'pull request',
+      whatIntro:
+        'I designed and built the frontend experience of the app, from the visual definition to the implementation of the main interfaces.',
       what: [
         {
-          title: 'Brand & design system',
-          body: 'Naming, identity, palette and typography. 30+ Figma wireframes and design tokens in Tailwind v4 with @theme.',
+          title: 'Identity & design system',
+          body: 'Visual identity, 30+ Figma wireframes and a design system with Tailwind v4 tokens. Responsive interfaces for desktop and mobile.',
         },
         {
           title: 'Frontend architecture',
-          body: 'Component structure, BEM-lite conventions and key screens: dashboard, history, transfers and settings.',
+          body: 'Reusable components and the main wallet flows: balance, conversion and transfers.',
         },
         {
-          title: 'API integration',
-          body: 'An axios service layer with automatic token refresh so sessions never silently expire.',
+          title: 'Authentication & integration',
+          body: 'Session state management, REST API integration and Axios interceptors that refresh the token automatically.',
         },
         {
-          title: 'Team process',
-          body: 'Protected branches, reviewed PRs and sprint planning in Trello.',
+          title: 'Teamwork',
+          body: 'Git with protected branches, Pull Requests and sprint planning alongside the backend team.',
         },
       ],
       archEyebrow: '02 — Architecture',
       archTitle: 'How a request travels',
       archNote: 'decoupled front and back',
+      archIntro: 'An SPA connected to a REST API, with JWT authentication and data persisted in PostgreSQL.',
       archNodes: [
-        { host: 'VERCEL · MY PART', title: 'Client SPA', tech: 'React · TypeScript · Vite · Tailwind v4 · AuthContext' },
-        { host: 'RAILWAY · BACKEND TEAM', title: 'REST API', tech: 'Express · TypeScript · auth · accounts · transfers' },
-        { host: 'RAILWAY · BACKEND TEAM', title: 'PostgreSQL', tech: 'users · accounts · transactions' },
+        {
+          host: 'VERCEL · MY PART',
+          title: 'Client · Frontend',
+          tech: 'React · TypeScript · Vite · Tailwind CSS v4',
+          detail: 'Protected routes, session handling and Axios interceptors.',
+        },
+        {
+          host: 'RAILWAY · BACKEND TEAM',
+          title: 'REST API',
+          tech: 'Express · TypeScript · JWT · Swagger',
+          detail: 'Endpoints for authentication, users, accounts, transactions and wallet operations, documented with Swagger.',
+        },
+        {
+          host: 'RAILWAY · BACKEND TEAM',
+          title: 'PostgreSQL',
+          tech: 'Sequelize · users · accounts · transactions',
+          detail: 'Persistence for all wallet data.',
+        },
       ],
       archEdges: ['HTTPS · JSON · access + refresh', 'SQL'],
       archServerless:

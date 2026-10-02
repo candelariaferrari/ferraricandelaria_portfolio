@@ -66,24 +66,35 @@ const es = {
     screenshotPending: 'captura pendiente',
     architecture: 'arquitectura · quién hizo qué',
     arch: {
-      client: 'Cliente · SPA',
-      clientTech: 'React + TS + Tailwind v4',
+      client: 'Cliente · Frontend',
+      clientTech: 'React + TS + Vite + Tailwind v4',
       mine: 'mi parte',
       api: 'API REST',
-      apiTech: 'Express + TypeScript',
+      apiTech: 'Express + TypeScript · Swagger',
       backendTeam: 'equipo backend',
-      transport: 'REST · JWT + refresh token (interceptor axios)',
+      team: 'equipo',
+      transport: 'REST · JWT + refresh token · interceptores de Axios',
       db: 'PostgreSQL',
-      dbTech: 'usuarios · cuentas · movimientos',
-      mailing: 'Mailing',
+      dbTech: 'Sequelize · usuarios · cuentas · movimientos',
+      mailing: 'Emails',
       mailingTech: 'Serverless → AWS SES',
+    },
+    featured: {
+      subtitle: 'Billetera digital para viajeros y nómadas digitales',
+      contributionsTitle: 'Mi aporte',
+      contributions: [
+        { area: 'UI & Design', items: 'Identidad visual · Design System · Responsive' },
+        { area: 'Frontend', items: 'Arquitectura de componentes · autenticación · integración con API' },
+        { area: 'Equipo', items: 'Git · Pull Requests · sprints' },
+      ],
+      techTitle: 'Tecnologías',
     },
     items: {
       nomapay: {
         meta: 'Proyecto final grupal · equipo de 4',
         title: 'NomaPay',
         description:
-          'Billetera virtual para viajeros y nómadas digitales: transferencias, cambio de moneda y depósitos. La construimos entre cuatro; yo coordiné el frontend: identidad de marca, design system, arquitectura de componentes, integración con la API, flujo de Git y sprints.',
+          'Permite gestionar saldo, convertir monedas, transferir y depositar desde una misma plataforma. En un equipo de cuatro personas, coordiné el frontend: identidad visual, design system, arquitectura de componentes e integración con la API.',
       },
       ecommerce: {
         meta: 'Módulo 5',
@@ -217,7 +228,7 @@ const es = {
     nomapay: {
       label: 'Caso de estudio · Proyecto final Henry',
       intro:
-        'Una billetera virtual para quienes viven viajando: transferir, cambiar moneda y depositar desde un mismo lugar. Proyecto grupal donde coordiné el frontend.',
+        'Billetera digital para personas que trabajan y se mueven entre distintos países: saldo, conversión de monedas, transferencias y depósitos en una misma plataforma. Proyecto grupal donde coordiné el frontend.',
       roleValue: 'Líder de frontend',
       teamValue: '4 personas · 2 front, 2 back',
       yearValue: '2026',
@@ -225,31 +236,49 @@ const es = {
       whatEyebrow: '01 — Qué hice',
       whatTitleStart: 'Del nombre al último',
       whatTitleEm: 'pull request',
+      whatIntro:
+        'Diseñé y desarrollé la experiencia frontend de la aplicación, desde la definición visual hasta la implementación de las principales interfaces.',
       what: [
         {
-          title: 'Marca y design system',
-          body: 'Naming, identidad, paleta y tipografía. Más de 30 wireframes en Figma y tokens de diseño en Tailwind v4 con @theme.',
+          title: 'Identidad y design system',
+          body: 'Identidad visual, más de 30 wireframes en Figma y un sistema de diseño con tokens en Tailwind v4. Interfaces responsive para desktop y mobile.',
         },
         {
           title: 'Arquitectura frontend',
-          body: 'Estructura de componentes, convenciones BEM-lite y pantallas clave: dashboard, historial, transferencias y ajustes.',
+          body: 'Componentes reutilizables y los flujos principales de la billetera: saldo, conversión y transferencias.',
         },
         {
-          title: 'Integración con la API',
-          body: 'Capa de servicios con axios y renovación automática del token para que la sesión no se corte en silencio.',
+          title: 'Autenticación e integración',
+          body: 'Manejo del estado de sesión, integración con la API REST e interceptores de Axios que renuevan el token automáticamente.',
         },
         {
-          title: 'Proceso de equipo',
-          body: 'Ramas protegidas, PRs revisados y planificación de sprints en Trello.',
+          title: 'Trabajo en equipo',
+          body: 'Git con ramas protegidas, Pull Requests y organización por sprints junto al equipo de backend.',
         },
       ],
       archEyebrow: '02 — Arquitectura',
       archTitle: 'Cómo viaja un pedido',
       archNote: 'front y back desacoplados',
+      archIntro: 'Una SPA conectada a una API REST, con autenticación JWT y persistencia de datos en PostgreSQL.',
       archNodes: [
-        { host: 'VERCEL · MI PARTE', title: 'Cliente SPA', tech: 'React · TypeScript · Vite · Tailwind v4 · AuthContext' },
-        { host: 'RAILWAY · EQUIPO BACKEND', title: 'API REST', tech: 'Express · TypeScript · auth · cuentas · transferencias' },
-        { host: 'RAILWAY · EQUIPO BACKEND', title: 'PostgreSQL', tech: 'usuarios · cuentas · movimientos' },
+        {
+          host: 'VERCEL · MI PARTE',
+          title: 'Cliente · Frontend',
+          tech: 'React · TypeScript · Vite · Tailwind CSS v4',
+          detail: 'Rutas protegidas, manejo de sesión e interceptores de Axios.',
+        },
+        {
+          host: 'RAILWAY · EQUIPO BACKEND',
+          title: 'API REST',
+          tech: 'Express · TypeScript · JWT · Swagger',
+          detail: 'Endpoints para autenticación, usuarios, cuentas, movimientos y operaciones de la billetera, documentados con Swagger.',
+        },
+        {
+          host: 'RAILWAY · EQUIPO BACKEND',
+          title: 'PostgreSQL',
+          tech: 'Sequelize · usuarios · cuentas · movimientos',
+          detail: 'Persistencia de los datos de la billetera.',
+        },
       ],
       archEdges: ['HTTPS · JSON · access + refresh', 'SQL'],
       archServerless:

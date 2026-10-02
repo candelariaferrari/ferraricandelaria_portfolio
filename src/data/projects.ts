@@ -10,7 +10,7 @@ export const projects: Project[] = [
     caseStudy: true,
     size: 'featured',
     layers: { ui: 'me', api: 'team', db: 'team', cloud: 'team' },
-    stack: ['React', 'TypeScript', 'Vite', 'Tailwind v4', 'Express', 'PostgreSQL', 'Railway', 'Vercel', 'AWS SES'],
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Express', 'Sequelize', 'Swagger', 'PostgreSQL', 'Railway', 'Vercel', 'AWS SES'],
     links: {},
   },
   {
