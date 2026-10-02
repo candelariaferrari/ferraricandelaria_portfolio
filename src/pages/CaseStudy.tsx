@@ -7,20 +7,26 @@ import { BrowserFrame } from '../components/ui/BrowserFrame'
 import { DemoMedia } from '../components/ui/DemoMedia'
 import { Icon } from '../components/ui/Icon'
 import { PhoneFrame } from '../components/ui/PhoneFrame'
-import { nomapayMedia } from '../data/media/nomapay'
+import { caseStudyMedia } from '../data/media'
 import { getProject, projects } from '../data/projects'
+import type { Translation } from '../i18n/locales/es'
 
-/** Por ahora solo NomaPay tiene caso de estudio; el resto redirige a la home. */
+type CaseStudySlug = keyof Translation['caseStudy']['items']
+
+const caseStudies = projects.filter((p) => p.caseStudy)
+
+/** Página de caso de estudio. Los proyectos sin caso redirigen a la home. */
 export default function CaseStudy() {
   const { slug = '' } = useParams()
   const { t } = useTranslation()
   const project = getProject(slug)
 
-  if (!project?.caseStudy || project.slug !== 'nomapay') return <Navigate to="/" replace />
+  const media = project ? caseStudyMedia[project.slug] : undefined
+  if (!project?.caseStudy || !media) return <Navigate to="/" replace />
 
-  const c = t('caseStudy.nomapay', { returnObjects: true })
-  const index = projects.indexOf(project)
-  const next = projects[(index + 1) % projects.length]
+  const c = t(`caseStudy.items.${project.slug as CaseStudySlug}`, { returnObjects: true })
+  const index = caseStudies.indexOf(project)
+  const next = caseStudies[(index + 1) % caseStudies.length]
   const nextTitle = t(`projects.items.${next.slug}.title`)
 
   const meta = [
@@ -54,7 +60,7 @@ export default function CaseStudy() {
           <div className="flex flex-col gap-6 lg:col-span-8">
             <span className="font-mono text-sm text-forest">{c.label}</span>
             <h1 className="m-0 font-serif text-7xl leading-[0.92] font-normal tracking-[-0.045em] md:text-[7.5rem]">
-              {t('projects.items.nomapay.title')}
+              {c.title}
             </h1>
             <p className="m-0 max-w-[680px] text-lg leading-normal text-ink-soft md:text-[22px]">{c.intro}</p>
           </div>
@@ -91,12 +97,12 @@ export default function CaseStudy() {
               className="pointer-events-none absolute inset-x-0 top-0 h-2/3 bg-[radial-gradient(ellipse_at_top,rgba(155,216,181,0.12),transparent_70%)]"
               aria-hidden="true"
             />
-            <BrowserFrame url="noma-pay-frontend.vercel.app" className="relative w-full rounded-b-none border-b-0 md:w-[88%]">
-              <img src={nomapayMedia.heroDesktop} alt={c.heroAlt} width={1600} height={886} className="block w-full" />
+            <BrowserFrame url={media.url} className="relative w-full rounded-b-none border-b-0 md:w-[88%]">
+              <img src={media.heroDesktop} alt={c.heroAlt} className="block w-full" />
             </BrowserFrame>
             <div className="absolute right-4 bottom-4 w-[28%] max-w-[230px] md:right-14 md:bottom-10 md:w-[22%]">
               <PhoneFrame>
-                <img src={nomapayMedia.heroMobile} alt="" width={638} height={1398} className="block w-full" />
+                <img src={media.heroMobile} alt="" className="block w-full" />
               </PhoneFrame>
             </div>
           </figure>
@@ -143,16 +149,19 @@ export default function CaseStudy() {
                   </div>
                   {i < c.archEdges.length && (
                     <div className="flex items-center justify-center gap-2 px-2 py-3 font-mono text-[11px] text-night-muted lg:w-[150px] lg:flex-col">
-                      <Icon name="arrowRight" className="rotate-90 lg:rotate-0" />
-                      <span className="text-center">{c.archEdges[i]}</span>
+                      <Icon
+                        name={c.archEdges[i].dir === 'both' ? 'arrowBoth' : 'arrowRight'}
+                        className="rotate-90 lg:rotate-0"
+                      />
+                      <span className="text-center">{c.archEdges[i].label}</span>
                     </div>
                   )}
                 </Fragment>
               ))}
             </div>
             <div className="flex flex-col gap-2 border-t border-dashed border-night-line pt-6 md:flex-row md:items-center md:gap-4">
-              <span className="font-mono text-[11px] text-mint">+ SERVERLESS</span>
-              <span className="text-[15px] text-night-text">{c.archServerless}</span>
+              <span className="font-mono text-[11px] text-mint">{c.archExtraLabel}</span>
+              <span className="text-[15px] text-night-text">{c.archExtra}</span>
             </div>
           </section>
         </div>
@@ -184,15 +193,17 @@ export default function CaseStudy() {
         {/* Pantallas */}
         <section className="container-site flex flex-col gap-6 pb-20">
           <h2 className="m-0 font-mono text-[13px] font-normal text-forest">{c.screensEyebrow}</h2>
-          <ul className="m-0 grid list-none grid-cols-1 gap-x-6 gap-y-10 p-0 md:grid-cols-2">
+          <ul
+            className={`m-0 grid list-none grid-cols-1 gap-x-6 gap-y-10 p-0 md:grid-cols-2 ${c.screens.length % 2 ? 'lg:grid-cols-3' : ''}`}
+          >
             {c.screens.map((screen, i) => (
               <li key={screen.title}>
                 <figure className="m-0 flex flex-col gap-4">
                   <BrowserFrame>
                     <DemoMedia
                       alt={screen.title}
-                      image={nomapayMedia.screens[i].image}
-                      video={nomapayMedia.screens[i].video}
+                      image={media.screens[i].image}
+                      video={media.screens[i].video}
                       className="aspect-[16/9] object-cover object-top"
                     />
                   </BrowserFrame>
@@ -206,9 +217,9 @@ export default function CaseStudy() {
           </ul>
         </section>
 
-        {/* Siguiente proyecto */}
+        {/* Siguiente caso de estudio */}
         <Link
-          to={{ pathname: '/', hash: 'proyectos' }}
+          to={`/proyectos/${next.slug}`}
           className="block bg-night text-paper transition-colors hover:bg-forest-dark"
         >
           <div className="container-site flex items-center justify-between gap-6 py-12 md:py-16">

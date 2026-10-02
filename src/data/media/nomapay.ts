@@ -6,11 +6,13 @@ import landingDesktop from '../../assets/projects/nomapay/landing-desktop.webp'
 import summaryDesktop from '../../assets/projects/nomapay/summary-desktop.webp'
 import transferPoster from '../../assets/projects/nomapay/transfer-poster.webp'
 import transferVideo from '../../assets/projects/nomapay/transfer.mp4'
+import type { CaseStudyMedia } from './types'
 
-/** Capturas del caso de estudio. El orden coincide con caseStudy.nomapay.screens */
-export const nomapayMedia = {
+/** Capturas del caso de estudio. El orden coincide con caseStudy.items.nomapay.screens */
+export const nomapayMedia: CaseStudyMedia = {
   heroDesktop: dashboardDesktop,
   heroMobile: dashboardMobile,
+  url: 'noma-pay-frontend.vercel.app',
   screens: [
     { image: landingDesktop },
     { image: convertPoster, video: convertVideo },
