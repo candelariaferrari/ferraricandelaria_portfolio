@@ -133,8 +133,11 @@ const en: Translation = {
     eyebrow: '02 — Stack',
     titleStart: 'My stack,',
     titleEm: 'by layer',
-    intro:
-      'Angular is where I have the most mileage; React + TypeScript is where I built everything recent. On the backend, REST APIs with Node plus SQL and NoSQL databases.',
+    comment: [
+      'Angular is where I have the most mileage.',
+      'React + TypeScript, where I built everything recent.',
+      'Backend: Node, SQL and NoSQL.',
+    ],
     groups: {
       frontend: '/frontend · frameworks & libraries',
       backend: '/backend',
@@ -148,8 +151,12 @@ const en: Translation = {
     eyebrow: '03 — How I work',
     titleStart: 'From Figma',
     titleEm: 'to deploy',
-    intro:
-      'My role is to build. When I get a Figma file I read it with a designer\'s eye: I spot missing states, suggest improvements and bring it to code with care for every detail.',
+    comment: [
+      'My role is to build.',
+      'I read Figma files with a designer\'s eye:',
+      'I spot missing states, suggest improvements',
+      'and bring it to code with care for every detail.',
+    ],
     steps: [
       {
         title: 'I read the design',

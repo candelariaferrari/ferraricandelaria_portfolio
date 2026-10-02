@@ -131,8 +131,11 @@ const es = {
     eyebrow: '02 — Stack',
     titleStart: 'Mi stack,',
     titleEm: 'por capa',
-    intro:
-      'Angular es donde tengo más horas de vuelo; React + TypeScript es donde construí todo lo reciente. En el backend, APIs REST con Node y bases SQL y NoSQL.',
+    comment: [
+      'Angular es donde tengo más horas de vuelo.',
+      'React + TypeScript, donde construí todo lo reciente.',
+      'Backend: Node, SQL y NoSQL.',
+    ],
     groups: {
       frontend: '/frontend · frameworks y librerías',
       backend: '/backend',
@@ -146,8 +149,12 @@ const es = {
     eyebrow: '03 — Cómo trabajo',
     titleStart: 'Del Figma',
     titleEm: 'al deploy',
-    intro:
-      'Mi rol es construir. Cuando recibo un Figma lo leo con ojo de diseño: detecto estados que faltan, propongo mejoras y lo llevo a código cuidando cada detalle.',
+    comment: [
+      'Mi rol es construir.',
+      'Leo el Figma con ojo de diseño:',
+      'detecto estados que faltan, propongo mejoras',
+      'y lo llevo a código cuidando cada detalle.',
+    ],
     steps: [
       {
         title: 'Leo el diseño',

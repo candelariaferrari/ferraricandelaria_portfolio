@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { CodeComment } from '../ui/CodeComment'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function Process() {
@@ -7,8 +8,8 @@ export function Process() {
 
   return (
     <section aria-labelledby="process-title" className="container-site flex flex-col gap-12 py-20 md:gap-14 md:py-[120px]">
-      <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-12">
-        <div className="lg:col-span-7">
+      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div>
           <SectionHeading
             id="process-title"
             eyebrow={t('process.eyebrow')}
@@ -16,7 +17,7 @@ export function Process() {
             titleEm={t('process.titleEm')}
           />
         </div>
-        <p className="m-0 text-base leading-relaxed text-ink-soft md:text-[17px] lg:col-span-5">{t('process.intro')}</p>
+        <CodeComment lines={t('process.comment', { returnObjects: true })} className="lg:max-w-[460px]" />
       </div>
 
       <ol className="m-0 grid list-none grid-cols-1 gap-x-6 gap-y-8 p-0 sm:grid-cols-2 lg:grid-cols-4">
