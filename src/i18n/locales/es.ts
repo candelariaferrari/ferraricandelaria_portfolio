@@ -123,13 +123,14 @@ const es = {
       palettes: {
         meta: 'Módulo 1',
         title: 'Generador de paletas',
-        description: 'Genera paletas de color automáticas para usar en proyectos.',
+        description:
+          'Paletas aleatorias generadas en HSL con rangos controlados, vista en HEX, RGB y HSL, bloqueo de colores, copia al portapapeles y paletas guardadas en localStorage.',
       },
     },
   },
 
   stack: {
-    eyebrow: '02 — Stack',
+    eyebrow: '03 — Stack',
     titleStart: 'Mi stack,',
     titleEm: 'por capa',
     comment: [
@@ -147,7 +148,7 @@ const es = {
   },
 
   process: {
-    eyebrow: '03 — Cómo trabajo',
+    eyebrow: '02 — Cómo trabajo',
     titleStart: 'Del Figma',
     titleEm: 'al deploy',
     comment: [
@@ -178,6 +179,9 @@ const es = {
 
   experience: {
     eyebrow: '04 — Experiencia',
+    titleStart: 'Trayectoria,',
+    titleEm: 'entre diseño y código',
+    jobsTitle: 'Experiencia laboral',
     jobs: [
       {
         period: '2020 — 2025',
@@ -205,7 +209,7 @@ const es = {
         description: 'Estudio de diseño: branding, identidad visual y piezas digitales.',
       },
     ],
-    educationEyebrow: '05 — Formación',
+    educationEyebrow: 'Formación',
     education: [
       { title: 'Full Stack Developer · Henry', detail: '2026 · React, Node, SQL' },
       { title: 'Angular: de cero a experto · Udemy', detail: '2025 · Signals, SSR, testing, i18n' },
@@ -216,7 +220,7 @@ const es = {
   },
 
   contact: {
-    eyebrow: '06 — Contacto',
+    eyebrow: '05 — Contacto',
     titleStart: '¿Construimos',
     titleEm: 'algo juntos?',
     body: 'Busco un equipo donde sumar como Frontend (React o Angular) o Full Stack. Remoto o híbrido desde Córdoba.',

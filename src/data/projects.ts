@@ -1,6 +1,7 @@
 import ecommerceThumb from '../assets/projects/ecommerce/home-desktop.webp'
 import forTodayThumb from '../assets/projects/for-today/summary-desktop.webp'
 import intensamenteThumb from '../assets/projects/intensamente/mockup.webp'
+import palettesThumb from '../assets/projects/palettes/screenshot.webp'
 import type { Project } from './types'
 
 // TODO: completar los links que faltan (live = deploy, repo = GitHub)
@@ -69,11 +70,13 @@ export const projects: Project[] = [
     slug: 'palettes',
     number: '06',
     size: 'compact',
-    thumb: 'palette',
+    image: palettesThumb,
     layers: { ui: 'me', api: 'none', db: 'none', cloud: 'none' },
-    // TODO: confirmar stack
-    stack: ['JavaScript'],
-    links: {},
+    stack: ['HTML', 'CSS', 'JavaScript', 'localStorage', 'GitHub Pages'],
+    links: {
+      live: 'https://candelariaferrari.github.io/ColorPalette_CandelariaFerrari/',
+      repo: 'https://github.com/candelariaferrari/ColorPalette_CandelariaFerrari',
+    },
   },
 ]
 

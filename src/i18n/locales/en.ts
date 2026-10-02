@@ -125,13 +125,14 @@ const en: Translation = {
       palettes: {
         meta: 'Module 1',
         title: 'Palette generator',
-        description: 'Generates automatic color palettes to use in projects.',
+        description:
+          'Random palettes generated in HSL with controlled ranges, shown in HEX, RGB and HSL, with color locking, copy to clipboard and palettes saved in localStorage.',
       },
     },
   },
 
   stack: {
-    eyebrow: '02 — Stack',
+    eyebrow: '03 — Stack',
     titleStart: 'My stack,',
     titleEm: 'by layer',
     comment: [
@@ -149,7 +150,7 @@ const en: Translation = {
   },
 
   process: {
-    eyebrow: '03 — How I work',
+    eyebrow: '02 — How I work',
     titleStart: 'From Figma',
     titleEm: 'to deploy',
     comment: [
@@ -180,6 +181,9 @@ const en: Translation = {
 
   experience: {
     eyebrow: '04 — Experience',
+    titleStart: 'My path,',
+    titleEm: 'between design and code',
+    jobsTitle: 'Work experience',
     jobs: [
       {
         period: '2020 — 2025',
@@ -207,7 +211,7 @@ const en: Translation = {
         description: 'Design studio: branding, visual identity and digital pieces.',
       },
     ],
-    educationEyebrow: '05 — Education',
+    educationEyebrow: 'Education',
     education: [
       { title: 'Full Stack Developer · Henry', detail: '2026 · React, Node, SQL' },
       { title: 'Angular: zero to expert · Udemy', detail: '2025 · Signals, SSR, testing, i18n' },
@@ -218,7 +222,7 @@ const en: Translation = {
   },
 
   contact: {
-    eyebrow: '06 — Contact',
+    eyebrow: '05 — Contact',
     titleStart: 'Shall we build',
     titleEm: 'something together?',
     body: "I'm looking for a team to join as a Frontend (React or Angular) or Full Stack developer. Remote or hybrid from Córdoba, Argentina.",
