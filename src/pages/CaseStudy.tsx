@@ -91,7 +91,7 @@ export default function CaseStudy() {
               className="pointer-events-none absolute inset-x-0 top-0 h-2/3 bg-[radial-gradient(ellipse_at_top,rgba(155,216,181,0.12),transparent_70%)]"
               aria-hidden="true"
             />
-            <BrowserFrame url="nomapay · dashboard" className="relative w-full rounded-b-none border-b-0 md:w-[88%]">
+            <BrowserFrame url="noma-pay-frontend.vercel.app" className="relative w-full rounded-b-none border-b-0 md:w-[88%]">
               <img src={nomapayMedia.heroDesktop} alt={c.heroAlt} width={1600} height={886} className="block w-full" />
             </BrowserFrame>
             <div className="absolute right-4 bottom-4 w-[28%] max-w-[230px] md:right-14 md:bottom-10 md:w-[22%]">

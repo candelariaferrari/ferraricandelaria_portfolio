@@ -11,7 +11,7 @@ export const projects: Project[] = [
     size: 'featured',
     layers: { ui: 'me', api: 'team', db: 'team', cloud: 'team' },
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Express', 'Sequelize', 'Swagger', 'PostgreSQL', 'Railway', 'Vercel', 'AWS SES'],
-    links: {},
+    links: { live: 'https://noma-pay-frontend.vercel.app/' },
   },
   {
     slug: 'ecommerce',
