@@ -1,3 +1,5 @@
+import ecommerceThumb from '../assets/projects/ecommerce/home-desktop.webp'
+import forTodayThumb from '../assets/projects/for-today/summary-desktop.webp'
 import type { Project } from './types'
 
 // TODO: completar los links que faltan (live = deploy, repo = GitHub)
@@ -17,17 +19,27 @@ export const projects: Project[] = [
     slug: 'ecommerce',
     number: '02',
     size: 'wide',
+    caseStudy: true,
+    image: ecommerceThumb,
     layers: { ui: 'me', api: 'me', db: 'me', cloud: 'me' },
     stack: ['React 18', 'TypeScript', 'Firebase Auth', 'Firestore', 'AWS S3', 'Vercel Functions', 'Vitest + RTL'],
-    links: { live: 'https://proyecto-m5-candelaria-ferrari.vercel.app/' },
+    links: {
+      live: 'https://proyecto-m5-candelaria-ferrari.vercel.app/',
+      repo: 'https://github.com/candelariaferrari/proyectoM5_CandelariaFerrari',
+    },
   },
   {
     slug: 'for-today',
     number: '03',
     size: 'wide',
+    caseStudy: true,
+    image: forTodayThumb,
     layers: { ui: 'me', api: 'me', db: 'me', cloud: 'me' },
     stack: ['React', 'TypeScript', 'Firebase Auth', 'Firestore', 'AWS SES', 'Vercel Functions'],
-    links: { repo: 'https://github.com/candelariaferrari/proyectoM4_CandelariaFerrari' },
+    links: {
+      live: 'https://proyecto-m4-candelaria-ferrari.vercel.app/',
+      repo: 'https://github.com/candelariaferrari/proyectoM4_CandelariaFerrari',
+    },
   },
   {
     slug: 'intensamente',

@@ -225,92 +225,284 @@ const es = {
     links: 'Links',
     next: 'Siguiente proyecto',
     screenshotPending: 'captura pendiente',
-    nomapay: {
-      label: 'Caso de estudio · Proyecto final Henry',
-      intro:
-        'Billetera digital para personas que trabajan y se mueven entre distintos países: saldo, conversión de monedas, transferencias y depósitos en una misma plataforma. Proyecto grupal donde coordiné el frontend.',
-      roleValue: 'Coordinación de frontend',
-      teamValue: '4 personas · 2 front, 2 back',
-      yearValue: '2026',
-      heroAlt: 'Dashboard de NomaPay en desktop y en mobile',
-      whatEyebrow: '01 — Qué hice',
-      whatTitleStart: 'Del nombre al último',
-      whatTitleEm: 'pull request',
-      whatIntro:
-        'Diseñé y desarrollé la experiencia frontend de la aplicación, desde la definición visual hasta la implementación de las principales interfaces.',
-      what: [
-        {
-          title: 'Identidad y design system',
-          body: 'Identidad visual, más de 30 wireframes en Figma y un sistema de diseño con tokens en Tailwind v4. Interfaces responsive para desktop y mobile.',
-        },
-        {
-          title: 'Arquitectura frontend',
-          body: 'Componentes reutilizables y los flujos principales de la billetera: saldo, conversión y transferencias.',
-        },
-        {
-          title: 'Autenticación e integración',
-          body: 'Manejo del estado de sesión, integración con la API REST e interceptores de Axios que renuevan el token automáticamente.',
-        },
-        {
-          title: 'Trabajo en equipo',
-          body: 'Git con ramas protegidas, Pull Requests y organización por sprints junto al equipo de backend.',
-        },
-      ],
-      archEyebrow: '02 — Arquitectura',
-      archTitle: 'Cómo viaja un pedido',
-      archNote: 'front y back desacoplados',
-      archIntro: 'Una SPA conectada a una API REST, con autenticación JWT y persistencia de datos en PostgreSQL.',
-      archNodes: [
-        {
-          host: 'VERCEL · MI PARTE',
-          title: 'Cliente · Frontend',
-          tech: 'React · TypeScript · Vite · Tailwind CSS v4',
-          detail: 'Rutas protegidas, manejo de sesión e interceptores de Axios.',
-        },
-        {
-          host: 'RAILWAY · EQUIPO BACKEND',
-          title: 'API REST',
-          tech: 'Express · TypeScript · JWT · Swagger',
-          detail: 'Endpoints para autenticación, usuarios, cuentas, movimientos y operaciones de la billetera, documentados con Swagger.',
-        },
-        {
-          host: 'RAILWAY · EQUIPO BACKEND',
-          title: 'PostgreSQL',
-          tech: 'Sequelize · usuarios · cuentas · movimientos',
-          detail: 'Persistencia de los datos de la billetera.',
-        },
-      ],
-      archEdges: ['HTTPS · JSON · access + refresh', 'SQL'],
-      archServerless:
-        'Emails transaccionales (recuperar contraseña, comprobantes de transferencia) por un endpoint en Vercel que envía con AWS SES.',
-      decisionsEyebrow: '03 — Decisiones',
-      decisionsTitleStart: 'Lo que elegí',
-      decisionsTitleEm: 'y por qué',
-      decisions: [
-        {
-          title: 'Refresh token con interceptor',
-          body: 'Un interceptor de axios renueva el access token y avisa al AuthContext por un bus de eventos: la sesión no muere a mitad de una transferencia.',
-        },
-        {
-          title: 'Tokens de diseño en CSS, no en JS',
-          body: 'Tailwind v4 con configuración CSS-first: los colores y tipos de la marca viven en un solo lugar.',
-        },
-        {
-          title: 'Recortar alcance a tiempo',
-          body: 'Sacamos compra/venta y nos quedamos con transferencia, cambio y depósito, para entregar pocas cosas bien hechas.',
-        },
-        {
-          title: 'Git flow con ramas protegidas',
-          body: 'main → develop → ramas por persona, con PRs obligatorios para integrar.',
-        },
-      ],
-      screensEyebrow: '04 — Pantallas',
-      screens: [
-        { title: 'Landing', caption: 'Página pública con la propuesta de valor y el acceso a la cuenta.' },
-        { title: 'Convertir monedas', caption: 'Conversión entre ARS, USD y BRL con la tasa y la comisión a la vista.' },
-        { title: 'Transferir', caption: 'Flujo en tres pasos: destinatario, monto y confirmación.' },
-        { title: 'Resumen semanal', caption: 'Entradas, salidas y cambios por día, filtrados por moneda.' },
-      ],
+    items: {
+      nomapay: {
+        title: 'NomaPay',
+        label: 'Caso de estudio · Proyecto final Henry',
+        intro:
+          'Billetera digital para personas que trabajan y se mueven entre distintos países: saldo, conversión de monedas, transferencias y depósitos en una misma plataforma. Proyecto grupal donde coordiné el frontend.',
+        roleValue: 'Coordinación de frontend',
+        teamValue: '4 personas · 2 front, 2 back',
+        yearValue: '2026',
+        heroAlt: 'Dashboard de NomaPay en desktop y en mobile',
+        whatEyebrow: '01 — Qué hice',
+        whatTitleStart: 'Del nombre al último',
+        whatTitleEm: 'pull request',
+        whatIntro:
+          'Diseñé y desarrollé la experiencia frontend de la aplicación, desde la definición visual hasta la implementación de las principales interfaces.',
+        what: [
+          {
+            title: 'Identidad y design system',
+            body: 'Identidad visual, más de 30 wireframes en Figma y un sistema de diseño con tokens en Tailwind v4. Interfaces responsive para desktop y mobile.',
+          },
+          {
+            title: 'Arquitectura frontend',
+            body: 'Componentes reutilizables y los flujos principales de la billetera: saldo, conversión y transferencias.',
+          },
+          {
+            title: 'Autenticación e integración',
+            body: 'Manejo del estado de sesión, integración con la API REST e interceptores de Axios que renuevan el token automáticamente.',
+          },
+          {
+            title: 'Trabajo en equipo',
+            body: 'Git con ramas protegidas, Pull Requests y organización por sprints junto al equipo de backend.',
+          },
+        ],
+        archEyebrow: '02 — Arquitectura',
+        archTitle: 'Cómo viaja un pedido',
+        archNote: 'front y back desacoplados',
+        archIntro: 'Una SPA conectada a una API REST, con autenticación JWT y persistencia de datos en PostgreSQL.',
+        archNodes: [
+          {
+            host: 'VERCEL · MI PARTE',
+            title: 'Cliente · Frontend',
+            tech: 'React · TypeScript · Vite · Tailwind CSS v4',
+            detail: 'Rutas protegidas, manejo de sesión e interceptores de Axios.',
+          },
+          {
+            host: 'RAILWAY · EQUIPO BACKEND',
+            title: 'API REST',
+            tech: 'Express · TypeScript · JWT · Swagger',
+            detail: 'Endpoints para autenticación, usuarios, cuentas, movimientos y operaciones de la billetera, documentados con Swagger.',
+          },
+          {
+            host: 'RAILWAY · EQUIPO BACKEND',
+            title: 'PostgreSQL',
+            tech: 'Sequelize · usuarios · cuentas · movimientos',
+            detail: 'Persistencia de los datos de la billetera.',
+          },
+        ],
+        archEdges: [
+          { label: 'HTTPS · JSON · access + refresh', dir: 'right' },
+          { label: 'SQL', dir: 'right' },
+        ],
+        archExtraLabel: '+ SERVERLESS',
+        archExtra:
+          'Emails transaccionales (recuperar contraseña, comprobantes de transferencia) por un endpoint en Vercel que envía con AWS SES.',
+        decisionsEyebrow: '03 — Decisiones',
+        decisionsTitleStart: 'Lo que elegí',
+        decisionsTitleEm: 'y por qué',
+        decisions: [
+          {
+            title: 'Refresh token con interceptor',
+            body: 'Un interceptor de axios renueva el access token y avisa al AuthContext por un bus de eventos: la sesión no muere a mitad de una transferencia.',
+          },
+          {
+            title: 'Tokens de diseño en CSS, no en JS',
+            body: 'Tailwind v4 con configuración CSS-first: los colores y tipos de la marca viven en un solo lugar.',
+          },
+          {
+            title: 'Recortar alcance a tiempo',
+            body: 'Sacamos compra/venta y nos quedamos con transferencia, cambio y depósito, para entregar pocas cosas bien hechas.',
+          },
+          {
+            title: 'Git flow con ramas protegidas',
+            body: 'main → develop → ramas por persona, con PRs obligatorios para integrar.',
+          },
+        ],
+        screensEyebrow: '04 — Pantallas',
+        screens: [
+          { title: 'Landing', caption: 'Página pública con la propuesta de valor y el acceso a la cuenta.' },
+          { title: 'Convertir monedas', caption: 'Conversión entre ARS, USD y BRL con la tasa y la comisión a la vista.' },
+          { title: 'Transferir', caption: 'Flujo en tres pasos: destinatario, monto y confirmación.' },
+          { title: 'Resumen semanal', caption: 'Entradas, salidas y cambios por día, filtrados por moneda.' },
+        ],
+      },
+      ecommerce: {
+        title: 'MUNDO',
+        label: 'Caso de estudio · Proyecto integrador M5',
+        intro:
+          'MUNDO es una juguetería ficticia: un e-commerce con dos experiencias, la de quien compra y la de quien administra el catálogo y las órdenes, con autenticación, base de datos e imágenes en la nube.',
+        roleValue: 'Desarrollo full stack',
+        teamValue: 'Proyecto individual',
+        yearValue: '2026',
+        heroAlt: 'Home de MUNDO en desktop y en mobile',
+        whatEyebrow: '01 — Qué hice',
+        whatTitleStart: 'Un e-commerce completo,',
+        whatTitleEm: 'de punta a punta',
+        whatIntro:
+          'Diseñé y desarrollé tanto la tienda como el panel de administración, con autenticación, base de datos y almacenamiento de imágenes reales.',
+        what: [
+          {
+            title: 'Experiencia de compra',
+            body: 'Catálogo con filtros por categoría y precio sincronizados en la URL, búsqueda con debounce, carrito de invitado que se fusiona al iniciar sesión y checkout con confirmación.',
+          },
+          {
+            title: 'Panel de administración',
+            body: 'Dashboard con métricas reales, CRUD de productos con subida de imágenes y gestión de órdenes con una máquina de estados simple.',
+          },
+          {
+            title: 'Seguridad y roles',
+            body: 'Rutas protegidas por sesión y por rol, y reglas de Firestore que impiden que alguien se asigne el rol de admin desde la app.',
+          },
+          {
+            title: 'Testing',
+            body: 'Alrededor de 100 tests con Vitest y React Testing Library: reducer del carrito, hooks, servicios, ruteo por rol y un checkout que no genera órdenes duplicadas.',
+          },
+        ],
+        archEyebrow: '02 — Arquitectura',
+        archTitle: 'Serverless y sin credenciales expuestas',
+        archNote: 'sin backend propio',
+        archIntro:
+          'Una SPA que habla directo con Firebase para la autenticación y los datos, y con una Vercel Function solo para firmar la subida de imágenes a S3.',
+        archNodes: [
+          {
+            host: 'FIREBASE',
+            title: 'Auth + Firestore',
+            tech: 'Email · Google · reglas de seguridad',
+            detail: 'Productos, órdenes y perfiles con rol customer o admin.',
+          },
+          {
+            host: 'VERCEL',
+            title: 'Cliente SPA',
+            tech: 'React 18 · TypeScript · Tailwind CSS v4',
+            detail: 'Context API por dominio y useReducer para el carrito.',
+          },
+          {
+            host: 'VERCEL FUNCTION → AWS',
+            title: 'Imágenes en S3',
+            tech: 'api/presign.ts · URL firmada de 60 s',
+            detail: 'El archivo viaja directo del navegador a S3.',
+          },
+        ],
+        archEdges: [
+          { label: 'SDK · auth y datos', dir: 'both' },
+          { label: 'presigned URL', dir: 'right' },
+        ],
+        archExtraLabel: '+ SEGURIDAD',
+        archExtra:
+          'Las credenciales de AWS nunca llegan al navegador, y nadie puede autoasignarse el rol de admin: Firestore bloquea cualquier cambio de rol desde la app.',
+        decisionsEyebrow: '03 — Decisiones',
+        decisionsTitleStart: 'Lo que elegí',
+        decisionsTitleEm: 'y por qué',
+        decisions: [
+          {
+            title: 'useReducer para el carrito',
+            body: 'Toda la lógica del carrito vive en un reducer puro: una sola fuente de verdad, fácil de testear sin renderizar nada.',
+          },
+          {
+            title: 'Presigned URLs para S3',
+            body: 'Una Vercel Function firma una subida única que vence en 60 segundos, y el archivo va directo del navegador a S3.',
+          },
+          {
+            title: 'Carrito de invitado',
+            body: 'Se puede armar el carrito sin cuenta y se fusiona con el del usuario al iniciar sesión, como en un e-commerce real.',
+          },
+          {
+            title: 'Paginación por cursor genérica',
+            body: 'Un hook que no conoce el dominio y se reutiliza en el catálogo y en el panel de administración.',
+          },
+        ],
+        screensEyebrow: '04 — Pantallas',
+        screens: [
+          { title: 'Catálogo', caption: 'Filtros por tipo de juego y precio, con paginación.' },
+          { title: 'Carrito', caption: 'Resumen del pedido y cuánto falta para el envío gratis.' },
+          { title: 'Inicio de sesión', caption: 'Ingreso con email o con Google, sin salir de la página.' },
+        ],
+      },
+      'for-today': {
+        title: 'For Today',
+        label: 'Caso de estudio · Proyecto integrador M4',
+        intro:
+          'Un gestor de tareas semanal: cada persona organiza sus tareas por prioridad y fecha, ve su progreso de la semana y recibe un resumen por email.',
+        roleValue: 'Desarrollo full stack',
+        teamValue: 'Proyecto individual',
+        yearValue: '2026',
+        heroAlt: 'Resumen semanal de For Today en desktop y en mobile',
+        whatEyebrow: '01 — Qué hice',
+        whatTitleStart: 'Del login al email,',
+        whatTitleEm: 'en tiempo real',
+        whatIntro:
+          'Diseñé y desarrollé la app completa: interfaz mobile-first, autenticación, datos por usuario y envío de emails desde una función serverless.',
+        what: [
+          {
+            title: 'Tareas en tiempo real',
+            body: 'CRUD completo con Firestore y onSnapshot: la lista se actualiza sola después de cada cambio, sin recargar la página.',
+          },
+          {
+            title: 'Resumen semanal',
+            body: 'Progreso de la semana, tareas por día y distribución por prioridad, con un gráfico de dona hecho a medida.',
+          },
+          {
+            title: 'Email con diseño',
+            body: 'Un botón arma el resumen en texto plano y en HTML, y una función serverless lo envía con AWS SES.',
+          },
+          {
+            title: 'Calidad',
+            body: '37 tests con Vitest y React Testing Library, validaciones con casos borde y TypeScript sin any.',
+          },
+        ],
+        archEyebrow: '02 — Arquitectura',
+        archTitle: 'Un resumen que llega a tu correo',
+        archNote: 'Firebase + serverless',
+        archIntro:
+          'La app lee y escribe las tareas directo en Firestore, y delega el envío de emails a una función serverless, la única que conoce las credenciales de AWS.',
+        archNodes: [
+          {
+            host: 'FIREBASE',
+            title: 'Auth + Firestore',
+            tech: 'Email · Google · onSnapshot',
+            detail: 'Cada tarea solo la puede leer o editar su dueño.',
+          },
+          {
+            host: 'VERCEL',
+            title: 'Cliente SPA',
+            tech: 'React 19 · TypeScript · CSS mobile-first',
+            detail: 'Hooks useTasks y useTaskActions, y toasts centralizados.',
+          },
+          {
+            host: 'VERCEL FUNCTION → AWS',
+            title: 'Email con SES',
+            tech: 'api/send-email.ts · texto + HTML',
+            detail: 'Valida el pedido y recién ahí llama a SES.',
+          },
+        ],
+        archEdges: [
+          { label: 'tiempo real', dir: 'both' },
+          { label: 'POST /api/send-email', dir: 'right' },
+        ],
+        archExtraLabel: '+ SEGURIDAD',
+        archExtra:
+          'Las credenciales de AWS solo existen en el servidor, y las reglas de Firestore garantizan que cada persona acceda únicamente a sus propias tareas.',
+        decisionsEyebrow: '03 — Decisiones',
+        decisionsTitleStart: 'Lo que elegí',
+        decisionsTitleEm: 'y por qué',
+        decisions: [
+          {
+            title: 'onSnapshot en vez de getDocs',
+            body: 'Una suscripción en tiempo real mantiene la interfaz sincronizada sin volver a pedir datos, y se cancela al desmontar para evitar memory leaks.',
+          },
+          {
+            title: 'Ordenar en el cliente',
+            body: 'Sacar el orderBy de la query evitó mantener un índice compuesto en Firestore para una colección chica.',
+          },
+          {
+            title: 'Acciones centralizadas',
+            body: 'Crear, editar, eliminar y completar comparten un único hook, con estado de carga y feedback por toast.',
+          },
+          {
+            title: 'Sesión sin parpadeos',
+            body: 'La ruta protegida espera a saber si hay sesión antes de redirigir, así no rebota al login al recargar.',
+          },
+        ],
+        screensEyebrow: '04 — Pantallas',
+        screens: [
+          { title: 'Mis tareas', caption: 'Crear, editar, completar y eliminar tareas, con filtros por estado.' },
+          { title: 'Nueva tarea', caption: 'Formulario con prioridad, fecha límite y validaciones.' },
+          { title: 'Inicio de sesión', caption: 'Ingreso con email o con Google.' },
+          { title: 'Email de resumen', caption: 'El resumen semanal, tal como llega al correo.' },
+        ],
+      },
     },
   },
 
