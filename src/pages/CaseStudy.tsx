@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { Logo } from '../components/layout/Navbar'
 import { Reveal } from '../components/motion/Reveal'
-import { fadeUp, stagger } from '../components/motion/variants'
+import { drawLine, ease, fadeIn, fadeUp, stagger, viewport } from '../components/motion/variants'
 import { Contact } from '../components/sections/Contact'
 import { BrowserFrame } from '../components/ui/BrowserFrame'
 import { DemoMedia } from '../components/ui/DemoMedia'
@@ -15,6 +15,9 @@ import { getProject, projects } from '../data/projects'
 import type { Translation } from '../i18n/locales/es'
 
 type CaseStudySlug = keyof Translation['caseStudy']['items']
+
+/** Props para que un bloque se anime al entrar en pantalla */
+const inView = { initial: 'hidden', whileInView: 'visible', viewport } as const
 
 const caseStudies = projects.filter((p) => p.caseStudy)
 
@@ -60,7 +63,7 @@ export default function CaseStudy() {
         </div>
       </header>
 
-      <main>
+      <main key={project.slug}>
         {/* Título */}
         <motion.section
           key={project.slug}
@@ -108,7 +111,7 @@ export default function CaseStudy() {
           className="container-site"
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          transition={{ duration: 0.8, ease, delay: 0.3 }}
         >
           <figure className="relative m-0 overflow-hidden rounded-[14px] bg-night px-4 pt-6 pb-0 md:px-14 md:pt-14">
             <div
@@ -118,31 +121,52 @@ export default function CaseStudy() {
             <BrowserFrame url={media.url} className="relative w-full rounded-b-none border-b-0 md:w-[88%]">
               <img src={media.heroDesktop} alt={c.heroAlt} className="block w-full" />
             </BrowserFrame>
-            <div className="absolute right-4 bottom-4 w-[28%] max-w-[230px] md:right-14 md:bottom-10 md:w-[22%]">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease, delay: 0.8 }}
+              className="absolute right-4 bottom-4 w-[28%] max-w-[230px] md:right-14 md:bottom-10 md:w-[22%]"
+            >
               <PhoneFrame>
                 <img src={media.heroMobile} alt="" className="block w-full" />
               </PhoneFrame>
-            </div>
+            </motion.div>
           </figure>
         </motion.div>
 
         {/* Qué hice */}
         <section className="container-site grid grid-cols-1 gap-10 pt-20 pb-16 md:pt-[110px] md:pb-20 lg:grid-cols-12 lg:gap-6">
-          <div className="flex flex-col gap-3 lg:col-span-4">
-            <span className="font-mono text-[13px] text-forest">{c.whatEyebrow}</span>
-            <h2 className="m-0 font-serif text-4xl leading-[1.05] font-normal tracking-[-0.02em] md:text-[2.75rem]">
+          <motion.div className="flex flex-col gap-3 lg:col-span-4" variants={stagger(0.1)} {...inView}>
+            <motion.span variants={fadeUp} className="font-mono text-[13px] text-forest">
+              {c.whatEyebrow}
+            </motion.span>
+            <motion.h2
+              variants={fadeUp}
+              className="m-0 font-serif text-4xl leading-[1.05] font-normal tracking-[-0.02em] md:text-[2.75rem]"
+            >
               {c.whatTitleStart} <em>{c.whatTitleEm}</em>
-            </h2>
-            <p className="m-0 mt-2 text-base leading-relaxed text-ink-soft">{c.whatIntro}</p>
-          </div>
-          <ul className="m-0 grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+            </motion.h2>
+            <motion.p variants={fadeUp} className="m-0 mt-2 text-base leading-relaxed text-ink-soft">
+              {c.whatIntro}
+            </motion.p>
+          </motion.div>
+          <motion.ul
+            className="m-0 grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-2 lg:col-span-7 lg:col-start-6"
+            variants={stagger(0.12, 0.15)}
+            {...inView}
+          >
             {c.what.map((w) => (
-              <li key={w.title} className="flex flex-col gap-2 border-t border-ink pt-4.5">
+              <motion.li key={w.title} variants={fadeUp} className="relative flex flex-col gap-2 pt-4.5">
+                <motion.span
+                  variants={drawLine}
+                  className="absolute top-0 left-0 h-px w-full origin-left bg-ink"
+                  aria-hidden="true"
+                />
                 <h3 className="m-0 text-[19px] font-medium">{w.title}</h3>
                 <p className="m-0 text-[15px] leading-relaxed text-muted">{w.body}</p>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </section>
 
         {/* Arquitectura */}
@@ -156,27 +180,33 @@ export default function CaseStudy() {
               </div>
               <span className="font-mono text-[13px] text-night-muted">{c.archNote}</span>
             </div>
-            <div className="flex flex-col items-stretch lg:flex-row">
+            <motion.div className="flex flex-col items-stretch lg:flex-row" variants={stagger(0.2, 0.3)} {...inView}>
               {c.archNodes.map((node, i) => (
                 <Fragment key={node.title}>
-                  <div className="flex flex-1 flex-col gap-2.5 rounded-[10px] border border-night-line p-6">
+                  <motion.div
+                    variants={fadeUp}
+                    className="flex flex-1 flex-col gap-2.5 rounded-[10px] border border-night-line p-6"
+                  >
                     <span className="font-mono text-[11px] text-mint">{node.host}</span>
                     <span className="text-xl font-medium">{node.title}</span>
                     <span className="font-mono text-xs leading-relaxed text-night-muted">{node.tech}</span>
                     <span className="mt-1 text-sm leading-relaxed text-night-text">{node.detail}</span>
-                  </div>
+                  </motion.div>
                   {i < c.archEdges.length && (
-                    <div className="flex items-center justify-center gap-2 px-2 py-3 font-mono text-[11px] text-night-muted lg:w-[150px] lg:flex-col">
+                    <motion.div
+                      variants={fadeIn}
+                      className="flex items-center justify-center gap-2 px-2 py-3 font-mono text-[11px] text-night-muted lg:w-[150px] lg:flex-col"
+                    >
                       <Icon
                         name={c.archEdges[i].dir === 'both' ? 'arrowBoth' : 'arrowRight'}
                         className="rotate-90 lg:rotate-0"
                       />
                       <span className="text-center">{c.archEdges[i].label}</span>
-                    </div>
+                    </motion.div>
                   )}
                 </Fragment>
               ))}
-            </div>
+            </motion.div>
             <div className="flex flex-col gap-2 border-t border-dashed border-night-line pt-6 md:flex-row md:items-center md:gap-4">
               <span className="font-mono text-[11px] text-mint">{c.archExtraLabel}</span>
               <span className="text-[15px] text-night-text">{c.archExtra}</span>
@@ -186,15 +216,25 @@ export default function CaseStudy() {
 
         {/* Decisiones */}
         <section className="container-site grid grid-cols-1 gap-10 pt-20 pb-16 md:pt-[110px] md:pb-20 lg:grid-cols-12 lg:gap-6">
-          <div className="flex flex-col gap-3 lg:col-span-4">
-            <span className="font-mono text-[13px] text-forest">{c.decisionsEyebrow}</span>
-            <h2 className="m-0 font-serif text-4xl leading-[1.05] font-normal tracking-[-0.02em] md:text-[2.75rem]">
+          <motion.div className="flex flex-col gap-3 lg:col-span-4" variants={stagger(0.1)} {...inView}>
+            <motion.span variants={fadeUp} className="font-mono text-[13px] text-forest">
+              {c.decisionsEyebrow}
+            </motion.span>
+            <motion.h2
+              variants={fadeUp}
+              className="m-0 font-serif text-4xl leading-[1.05] font-normal tracking-[-0.02em] md:text-[2.75rem]"
+            >
               {c.decisionsTitleStart} <em>{c.decisionsTitleEm}</em>
-            </h2>
-          </div>
-          <ol className="m-0 flex list-none flex-col border-b border-line p-0 lg:col-span-7 lg:col-start-6">
+            </motion.h2>
+          </motion.div>
+          <motion.ol
+            className="m-0 flex list-none flex-col border-b border-line p-0 lg:col-span-7 lg:col-start-6"
+            variants={stagger(0.12, 0.15)}
+            {...inView}
+          >
             {c.decisions.map((d, i) => (
-              <li
+              <motion.li
+                variants={fadeUp}
                 key={d.title}
                 className={`grid grid-cols-[48px_1fr] border-t py-6 md:grid-cols-[56px_1fr] ${i === 0 ? 'border-ink' : 'border-line'}`}
               >
@@ -203,19 +243,25 @@ export default function CaseStudy() {
                   <h3 className="m-0 text-[19px] font-medium">{d.title}</h3>
                   <p className="m-0 text-[15px] leading-relaxed text-muted">{d.body}</p>
                 </div>
-              </li>
+              </motion.li>
             ))}
-          </ol>
+          </motion.ol>
         </section>
 
         {/* Pantallas */}
         <section className="container-site flex flex-col gap-6 pb-20">
-          <h2 className="m-0 font-mono text-[13px] font-normal text-forest">{c.screensEyebrow}</h2>
-          <ul
+          <Reveal>
+            <h2 className="m-0 font-mono text-[13px] font-normal text-forest">{c.screensEyebrow}</h2>
+          </Reveal>
+          <motion.ul
             className={`m-0 grid list-none grid-cols-1 gap-x-6 gap-y-10 p-0 md:grid-cols-2 ${c.screens.length % 2 ? 'lg:grid-cols-3' : ''}`}
+            variants={stagger(0.15)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
           >
             {c.screens.map((screen, i) => (
-              <li key={screen.title}>
+              <motion.li key={screen.title} variants={fadeUp}>
                 <figure className="m-0 flex flex-col gap-4">
                   <BrowserFrame>
                     <DemoMedia
@@ -230,22 +276,27 @@ export default function CaseStudy() {
                     <span className="text-[15px] leading-relaxed text-muted">{screen.caption}</span>
                   </figcaption>
                 </figure>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </section>
 
         {/* Siguiente caso de estudio */}
         <Link
           to={`/proyectos/${next.slug}`}
-          className="block bg-night text-paper transition-colors hover:bg-forest-dark"
+          className="group block bg-night text-paper transition-colors hover:bg-forest-dark"
         >
           <div className="container-site flex items-center justify-between gap-6 py-12 md:py-16">
             <div className="flex flex-col gap-2.5">
               <span className="font-mono text-[13px] text-mint">{t('caseStudy.next')}</span>
               <span className="font-serif text-4xl tracking-[-0.03em] md:text-[4rem]">{nextTitle}</span>
             </div>
-            <Icon name="arrowRight" size={48} strokeWidth={1.5} />
+            <Icon
+              name="arrowRight"
+              size={48}
+              strokeWidth={1.5}
+              className="shrink-0 transition-transform duration-300 group-hover:translate-x-2 motion-reduce:transition-none"
+            />
           </div>
         </Link>
       </main>
