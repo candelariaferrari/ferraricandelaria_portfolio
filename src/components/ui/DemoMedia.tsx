@@ -19,7 +19,7 @@ export function DemoMedia({ alt, image, video, className = '' }: DemoMediaProps)
   if (video && !reduceMotion) {
     return (
       <video
-        className={`block w-full ${className}`}
+        className={`block ${className || 'w-full'}`}
         src={video}
         poster={image}
         autoPlay
@@ -32,5 +32,5 @@ export function DemoMedia({ alt, image, video, className = '' }: DemoMediaProps)
     )
   }
 
-  return <img src={image} alt={alt} loading="lazy" decoding="async" className={`block w-full ${className}`} />
+  return <img src={image} alt={alt} loading="lazy" decoding="async" className={`block ${className || 'w-full'}`} />
 }

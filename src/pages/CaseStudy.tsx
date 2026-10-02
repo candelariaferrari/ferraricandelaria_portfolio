@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Fragment } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { Logo } from '../components/layout/Navbar'
@@ -9,6 +9,7 @@ import { Contact } from '../components/sections/Contact'
 import { BrowserFrame } from '../components/ui/BrowserFrame'
 import { DemoMedia } from '../components/ui/DemoMedia'
 import { Icon } from '../components/ui/Icon'
+import { Lightbox } from '../components/ui/Lightbox'
 import { PhoneFrame } from '../components/ui/PhoneFrame'
 import { caseStudyMedia } from '../data/media'
 import { getProject, projects } from '../data/projects'
@@ -26,6 +27,8 @@ export default function CaseStudy() {
   const { slug = '' } = useParams()
   const { t } = useTranslation()
   const project = getProject(slug)
+  const [zoomed, setZoomed] = useState<number | null>(null)
+  const closeZoom = useCallback(() => setZoomed(null), [setZoomed])
 
   const media = project ? caseStudyMedia[project.slug] : undefined
   if (!project?.caseStudy || !media) return <Navigate to="/" replace />
@@ -263,14 +266,21 @@ export default function CaseStudy() {
             {c.screens.map((screen, i) => (
               <motion.li key={screen.title} variants={fadeUp}>
                 <figure className="m-0 flex flex-col gap-4">
-                  <BrowserFrame>
-                    <DemoMedia
-                      alt={screen.title}
-                      image={media.screens[i].image}
-                      video={media.screens[i].video}
-                      className="aspect-[16/9] object-cover object-top"
-                    />
-                  </BrowserFrame>
+                  <button
+                    type="button"
+                    onClick={() => setZoomed(i)}
+                    aria-label={t('caseStudy.lightbox.open', { title: screen.title })}
+                    className="group block cursor-zoom-in rounded-xl text-left"
+                  >
+                    <BrowserFrame className="transition-transform duration-300 group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+                      <DemoMedia
+                        alt={screen.title}
+                        image={media.screens[i].image}
+                        video={media.screens[i].video}
+                        className="aspect-[16/9] w-full object-cover object-top"
+                      />
+                    </BrowserFrame>
+                  </button>
                   <figcaption className="flex flex-col gap-1">
                     <span className="text-[17px] font-medium">{screen.title}</span>
                     <span className="text-[15px] leading-relaxed text-muted">{screen.caption}</span>
@@ -300,6 +310,13 @@ export default function CaseStudy() {
           </div>
         </Link>
       </main>
+
+      <Lightbox
+        items={c.screens.map((screen, i) => ({ ...screen, ...media.screens[i] }))}
+        index={zoomed}
+        onClose={closeZoom}
+        onChange={setZoomed}
+      />
 
       <Contact />
     </>

@@ -239,6 +239,13 @@ const en: Translation = {
     links: 'Links',
     next: 'Next project',
     screenshotPending: 'screenshot coming soon',
+    lightbox: {
+      open: 'Enlarge screenshot: {{title}}',
+      close: 'Close',
+      prev: 'Previous screenshot',
+      next: 'Next screenshot',
+      counter: '{{current}} of {{total}}',
+    },
     items: {
       nomapay: {
         title: 'NomaPay',

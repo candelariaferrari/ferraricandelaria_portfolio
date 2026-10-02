@@ -237,6 +237,13 @@ const es = {
     links: 'Links',
     next: 'Siguiente proyecto',
     screenshotPending: 'captura pendiente',
+    lightbox: {
+      open: 'Ampliar captura: {{title}}',
+      close: 'Cerrar',
+      prev: 'Captura anterior',
+      next: 'Captura siguiente',
+      counter: '{{current}} de {{total}}',
+    },
     items: {
       nomapay: {
         title: 'NomaPay',
