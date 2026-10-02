@@ -7,7 +7,7 @@ export function Stack() {
   const { t } = useTranslation()
 
   return (
-    <section id="stack" aria-labelledby="stack-title" className="mt-16 bg-night py-16 text-paper md:mt-[100px] md:py-[110px]">
+    <section id="stack" aria-labelledby="stack-title" className="bg-night py-16 text-paper md:py-[110px]">
       <div className="container-site flex flex-col gap-12 md:gap-14">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
