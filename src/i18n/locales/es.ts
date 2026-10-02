@@ -116,8 +116,9 @@ const es = {
       },
       'api-swagger': {
         meta: 'Módulo 2',
-        title: 'API documentada con Swagger',
-        description: 'API REST con documentación interactiva OpenAPI.',
+        title: 'API MiniBlog',
+        description:
+          'API REST para gestionar autores y publicaciones, con una relación 1:N en PostgreSQL, validaciones, códigos HTTP correctos, documentación OpenAPI y tests de integración.',
       },
       palettes: {
         meta: 'Módulo 1',

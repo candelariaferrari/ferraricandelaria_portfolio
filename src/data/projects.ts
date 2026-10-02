@@ -59,10 +59,11 @@ export const projects: Project[] = [
     number: '05',
     size: 'compact',
     thumb: 'endpoints',
-    layers: { ui: 'none', api: 'me', db: 'me', cloud: 'none' },
-    // TODO: confirmar stack y base de datos
-    stack: ['Node.js', 'Express', 'Swagger'],
-    links: {},
+    layers: { ui: 'none', api: 'me', db: 'me', cloud: 'me' },
+    stack: ['Node.js', 'Express', 'PostgreSQL', 'Swagger', 'Jest + Supertest', 'Railway'],
+    // TODO: cuando Swagger vuelva a funcionar, sumar
+    // docs: 'https://proyectom2candelariaferrari-production.up.railway.app/api-docs'
+    links: { repo: 'https://github.com/candelariaferrari/ProyectoM2_CandelariaFerrari' },
   },
   {
     slug: 'palettes',

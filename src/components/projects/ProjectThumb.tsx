@@ -12,10 +12,10 @@ export function ProjectThumb({ project, title }: { project: Project; title: stri
 
   if (project.thumb === 'endpoints') {
     const rows = [
-      ['GET', 'text-[#7fd1a8]', '/api/[recurso]'],
-      ['POST', 'text-amber', '/api/[recurso]'],
-      ['PUT', 'text-mint', '/api/[recurso]/:id'],
-      ['DELETE', 'text-[#f29b8b]', '/api/[recurso]/:id'],
+      ['GET', 'text-[#7fd1a8]', '/api/authors'],
+      ['POST', 'text-amber', '/api/posts'],
+      ['PUT', 'text-mint', '/api/posts/:id'],
+      ['DELETE', 'text-[#f29b8b]', '/api/authors/:id'],
     ]
     return (
       <div className={`${height} flex flex-col justify-center gap-2 border-b border-line bg-night p-6`} aria-hidden="true">

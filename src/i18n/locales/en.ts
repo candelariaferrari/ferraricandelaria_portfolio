@@ -118,8 +118,9 @@ const en: Translation = {
       },
       'api-swagger': {
         meta: 'Module 2',
-        title: 'API documented with Swagger',
-        description: 'REST API with interactive OpenAPI documentation.',
+        title: 'MiniBlog API',
+        description:
+          'A REST API to manage authors and posts, with a 1:N relationship in PostgreSQL, validations, proper HTTP status codes, OpenAPI docs and integration tests.',
       },
       palettes: {
         meta: 'Module 1',
