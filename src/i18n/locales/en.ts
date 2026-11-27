@@ -47,7 +47,7 @@ const en: Translation = {
     },
     {
       title: 'Modern Full Stack',
-      body: 'Recent experience with React, TypeScript, Node.js, PostgreSQL and Firebase.',
+      body: 'Recent experience with React, Next.js, TypeScript, Node.js, PostgreSQL and Firebase.',
     },
     {
       title: 'From idea to production',
@@ -68,30 +68,37 @@ const en: Translation = {
     screenshotPending: 'screenshot coming soon',
     architecture: 'architecture · who did what',
     arch: {
-      client: 'Client · Frontend',
-      clientTech: 'React + TS + Vite + Tailwind v4',
+      client: 'Client',
+      clientTech: 'React 19 · MapLibre GL · Tailwind v4 · localStorage',
+      clientTag: 'Next.js',
       mine: 'my part',
-      api: 'REST API',
-      apiTech: 'Express + TypeScript · Swagger',
-      backendTeam: 'backend team',
-      team: 'team',
-      transport: 'REST · JWT + refresh token · Axios interceptors',
-      db: 'PostgreSQL',
-      dbTech: 'Sequelize · users · accounts · transactions',
-      mailing: 'Emails',
-      mailingTech: 'Serverless → AWS SES',
+      transport: 'fetch · request cache in the browser',
+      server: 'Next.js server',
+      serverTech: 'Server Components · Route Handlers · "use cache"',
+      serverTag: 'Vercel',
+      external: 'external API',
+      externals: [
+        { title: 'PokéAPI', tech: '151 Pokémon · Spanish-language entries' },
+        { title: 'Open-Meteo', tech: 'Live weather for each region' },
+      ],
     },
     featured: {
-      subtitle: 'A digital wallet for travelers and digital nomads',
-      contributionsTitle: 'My contribution',
+      subtitle: 'A Pokémon expedition radar over the map of Argentina',
+      contributionsTitle: 'What I did',
       contributions: [
-        { area: 'UI & Design', items: 'Visual identity · Design System · Responsive' },
-        { area: 'Frontend', items: 'Component architecture · authentication · API integration' },
-        { area: 'Team', items: 'Git · Pull Requests · sprints' },
+        { area: 'Product & UX', items: 'Concept · design system · desktop and mobile' },
+        { area: 'Frontend', items: 'Interactive map · Server Components · two-level cache' },
+        { area: 'Quality', items: '30 tests with Vitest · Lighthouse 100 for accessibility' },
       ],
       techTitle: 'Tech stack',
     },
     items: {
+      pokeradar: {
+        meta: 'Technical challenge · 72 hours',
+        title: 'PokéradAR',
+        description:
+          'Each region of Argentina is a biome with its own live weather and its own Pokémon. You explore the map, scan areas, build a team of up to six and share it with a link. My first project with the Next.js App Router and MapLibre.',
+      },
       nomapay: {
         meta: 'Final group project · team of 4',
         title: 'NomaPay',
@@ -247,6 +254,97 @@ const en: Translation = {
       counter: '{{current}} of {{total}}',
     },
     items: {
+      pokeradar: {
+        title: 'PokéradAR',
+        label: 'Case study · Technical challenge',
+        intro:
+          'A Pokémon expedition radar over the map of Argentina: each region is a biome with its own live weather and its own Pokémon. I designed and built it on my own in 72 hours, as a technical challenge for a Frontend role.',
+        roleValue: 'Design and development',
+        teamValue: 'Solo project',
+        yearValue: '2026',
+        heroAlt: 'PokéradAR on desktop: the radar scanning the Córdoba hills with Sandshrew’s card open',
+        whatEyebrow: '01 — What I did',
+        whatTitleStart: 'From concept',
+        whatTitleEm: 'to deploy in 72 hours',
+        whatIntro:
+          'The PokéAPI doesn’t say where each Pokémon lives, so I made up a rule: each region of Argentina is a biome, and each biome attracts certain types.',
+        what: [
+          {
+            title: 'Concept and design system',
+            body: 'Narrative, palette, tokens and desktop and mobile layouts before writing any code. On mobile, controls sit within thumb reach.',
+          },
+          {
+            title: 'The map is the navigation',
+            body: 'MapLibre GL with regions colored by biome. Scanning reveals 8 Pokémon one after another, and the camera travels between regions.',
+          },
+          {
+            title: 'Live weather as a game rule',
+            body: 'Open-Meteo provides each region’s weather: rain brings more Water and Bug types, heat brings more Fire. The rule is shown on screen.',
+          },
+          {
+            title: 'A team to share',
+            body: 'A team of up to 6 saved in the browser, plus its own URL with a preview image generated for each team.',
+          },
+        ],
+        archEyebrow: '02 — Architecture',
+        archTitle: 'How a request travels',
+        archNote: 'the browser never talks to external APIs',
+        archIntro: 'Next.js with the App Router: pages and Route Handlers on the server, and the map as a client island.',
+        archNodes: [
+          {
+            host: 'BROWSER · MY PART',
+            title: 'Client',
+            tech: 'React 19 · MapLibre GL · Tailwind CSS v4',
+            detail: 'Interactive map, radar state and a team persisted in localStorage.',
+          },
+          {
+            host: 'VERCEL · MY PART',
+            title: 'Next.js server',
+            tech: 'Server Components · Route Handlers · "use cache"',
+            detail: 'Validates, translates and trims responses, and caches them for every user.',
+          },
+          {
+            host: 'EXTERNAL APIS',
+            title: 'PokéAPI + Open-Meteo',
+            tech: 'Pokémon · live weather',
+            detail: 'Public data, no API key needed.',
+          },
+        ],
+        archEdges: [
+          { label: 'fetch · JSON', dir: 'right' },
+          { label: 'HTTPS · cached', dir: 'right' },
+        ],
+        archExtraLabel: '+ AI AS A PAIR PROGRAMMER',
+        archExtra:
+          'I worked with Claude as a pair programmer, but I wrote and tested every line myself. I logged the key decisions in a project journal.',
+        decisionsEyebrow: '03 — Decisions',
+        decisionsTitleStart: 'What I chose',
+        decisionsTitleEm: 'and why',
+        decisions: [
+          {
+            title: 'Route Handlers as a middle layer',
+            body: 'The server validates, translates and caches PokéAPI and weather responses. If a provider changes, only one file changes.',
+          },
+          {
+            title: 'Precomputed data',
+            body: 'A script assigns the 151 Pokémon to regions by type and saves the result as JSON: the app doesn’t hit 151 endpoints per visit.',
+          },
+          {
+            title: 'CSS animations, not a library',
+            body: 'Entrances, exits and radar pulses that CSS handles without adding weight. All of them respect prefers-reduced-motion.',
+          },
+          {
+            title: 'Tests on the game rules',
+            body: '30 Vitest tests on the pure logic: scanning, filters, weather and invalid team URLs.',
+          },
+        ],
+        screensEyebrow: '04 — Screens',
+        screens: [
+          { title: 'Scan and discover', caption: 'Pick a region, scan the area and open each Pokémon’s card with real data.' },
+          { title: 'Regions of Argentina', caption: 'Zooming out shows every region in its color; tapping one travels there.' },
+          { title: 'Your team', caption: 'Up to six Pokémon, ready to share with a link.' },
+        ],
+      },
       nomapay: {
         title: 'NomaPay',
         label: 'Case study · Henry final project',

@@ -1,3 +1,4 @@
+import nomapayThumb from '../assets/projects/nomapay/dashboard-desktop.webp'
 import ecommerceThumb from '../assets/projects/ecommerce/home-desktop.webp'
 import forTodayThumb from '../assets/projects/for-today/summary-desktop.webp'
 import intensamenteThumb from '../assets/projects/intensamente/mockup.webp'
@@ -8,18 +9,31 @@ import type { Project } from './types'
 // y sumar `image` cuando tengas las capturas en src/assets/projects/.
 export const projects: Project[] = [
   {
-    slug: 'nomapay',
+    slug: 'pokeradar',
     number: '01',
     featured: true,
     caseStudy: true,
     size: 'featured',
+    layers: { ui: 'me', api: 'me', db: 'none', cloud: 'me' },
+    stack: ['Next.js 16 (App Router)', 'TypeScript', 'Tailwind CSS v4', 'MapLibre GL', 'PokéAPI', 'Open-Meteo', 'Vitest', 'Vercel'],
+    links: {
+      live: 'https://pokeradar-candeferrari.vercel.app/',
+      repo: 'https://github.com/candelariaferrari/pokeradar',
+    },
+  },
+  {
+    slug: 'nomapay',
+    number: '02',
+    caseStudy: true,
+    size: 'wide',
+    image: nomapayThumb,
     layers: { ui: 'me', api: 'team', db: 'team', cloud: 'team' },
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS v4', 'Express', 'Sequelize', 'Swagger', 'PostgreSQL', 'Railway', 'Vercel', 'AWS SES'],
     links: { live: 'https://noma-pay-frontend.vercel.app/' },
   },
   {
     slug: 'ecommerce',
-    number: '02',
+    number: '03',
     size: 'wide',
     caseStudy: true,
     image: ecommerceThumb,
@@ -32,7 +46,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'for-today',
-    number: '03',
+    number: '04',
     size: 'wide',
     caseStudy: true,
     image: forTodayThumb,
@@ -45,7 +59,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'intensamente',
-    number: '04',
+    number: '05',
     size: 'compact',
     image: intensamenteThumb,
     layers: { ui: 'me', api: 'me', db: 'none', cloud: 'me' },
@@ -57,7 +71,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'api-swagger',
-    number: '05',
+    number: '06',
     size: 'compact',
     thumb: 'endpoints',
     layers: { ui: 'none', api: 'me', db: 'me', cloud: 'me' },
@@ -68,7 +82,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'palettes',
-    number: '06',
+    number: '07',
     size: 'compact',
     image: palettesThumb,
     layers: { ui: 'me', api: 'none', db: 'none', cloud: 'none' },

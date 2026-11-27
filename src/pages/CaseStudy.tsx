@@ -108,7 +108,7 @@ export default function CaseStudy() {
           </motion.dl>
         </motion.section>
 
-        {/* Captura principal: desktop + mobile */}
+        {/* Captura principal: desktop + mobile (si hay) */}
         <motion.div
           key={`hero-${project.slug}`}
           className="container-site"
@@ -121,9 +121,13 @@ export default function CaseStudy() {
               className="pointer-events-none absolute inset-x-0 top-0 h-2/3 bg-[radial-gradient(ellipse_at_top,rgba(155,216,181,0.12),transparent_70%)]"
               aria-hidden="true"
             />
-            <BrowserFrame url={media.url} className="relative w-full rounded-b-none border-b-0 md:w-[88%]">
+            <BrowserFrame
+              url={media.url}
+              className={`relative w-full rounded-b-none border-b-0 ${media.heroMobile ? 'md:w-[88%]' : ''}`}
+            >
               <img src={media.heroDesktop} alt={c.heroAlt} className="block w-full" />
             </BrowserFrame>
+            {media.heroMobile && (
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -134,6 +138,7 @@ export default function CaseStudy() {
                 <img src={media.heroMobile} alt="" className="block w-full" />
               </PhoneFrame>
             </motion.div>
+            )}
           </figure>
         </motion.div>
 

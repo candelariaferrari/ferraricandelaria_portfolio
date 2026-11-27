@@ -35,14 +35,15 @@ export function Projects() {
       ))}
 
       <motion.div
-        className="grid grid-cols-1 gap-6 md:grid-cols-2"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
         variants={stagger(0.12)}
         initial="hidden"
         whileInView="visible"
         viewport={viewport}
       >
         {wide.map((p) => (
-          <motion.div key={p.slug} variants={fadeUp} className="flex">
+          // Si la cantidad es impar, la última card ocupa todo el ancho en tablet
+          <motion.div key={p.slug} variants={fadeUp} className="flex md:max-xl:last:odd:col-span-2">
             <ProjectCard project={p} />
           </motion.div>
         ))}

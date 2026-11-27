@@ -27,10 +27,11 @@ function Node({ title, tech, tag, dashed = false }: { title: ReactNode; tech: st
   )
 }
 
-/** Diagrama de arquitectura de NomaPay, marcando qué parte hice yo. */
+/** Diagrama de arquitectura del proyecto destacado (PokéradAR), marcando qué parte hice yo. */
 export function ArchitectureDiagram() {
   const { t } = useTranslation()
   const a = t('projects.arch', { returnObjects: true })
+  const mine = <span className="ml-2 rounded bg-mint px-1.5 py-0.5 font-mono text-[11px] text-ink">{a.mine}</span>
 
   return (
     <motion.figure
@@ -44,16 +45,16 @@ export function ArchitectureDiagram() {
       <motion.figcaption variants={fadeUp} className="font-mono text-xs text-night-muted">{t('projects.architecture')}</motion.figcaption>
 
       <motion.div variants={fadeUp}>
-      <Node
-        title={
-          <>
-            {a.client}
-            <span className="ml-2 rounded bg-mint px-1.5 py-0.5 font-mono text-[11px] text-ink">{a.mine}</span>
-          </>
-        }
-        tech={a.clientTech}
-        tag="Vercel"
-      />
+        <Node
+          title={
+            <>
+              {a.client}
+              {mine}
+            </>
+          }
+          tech={a.clientTech}
+          tag={a.clientTag}
+        />
       </motion.div>
 
       <motion.div variants={fadeUp} className="flex items-center gap-2.5 pl-6 font-mono text-xs text-night-muted">
@@ -62,48 +63,36 @@ export function ArchitectureDiagram() {
       </motion.div>
 
       <motion.div variants={fadeUp}>
-      <Node
-        title={
-          <>
-            {a.api}
-            <span className="ml-2 font-mono text-[11px] text-night-muted">{a.backendTeam}</span>
-          </>
-        }
-        tech={a.apiTech}
-        tag="Railway"
-      />
+        <Node
+          title={
+            <>
+              {a.server}
+              {mine}
+            </>
+          }
+          tech={a.serverTech}
+          tag={a.serverTag}
+        />
       </motion.div>
 
       <motion.div variants={fadeUp} className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-        <div className="flex flex-col gap-3.5">
-          <div className="pl-6 text-night-muted">
-            <DownArrow />
+        {a.externals.map((ext) => (
+          <div key={ext.title} className="flex flex-col gap-3.5">
+            <div className="pl-6 text-night-muted">
+              <DownArrow />
+            </div>
+            <Node
+              title={
+                <>
+                  {ext.title}
+                  <span className="ml-2 font-mono text-[11px] text-night-muted">{a.external}</span>
+                </>
+              }
+              tech={ext.tech}
+              dashed
+            />
           </div>
-          <Node
-            title={
-              <>
-                {a.db}
-                <span className="ml-2 font-mono text-[11px] text-night-muted">{a.team}</span>
-              </>
-            }
-            tech={a.dbTech}
-          />
-        </div>
-        <div className="flex flex-col gap-3.5">
-          <div className="pl-6 text-night-muted">
-            <DownArrow />
-          </div>
-          <Node
-            title={
-              <>
-                {a.mailing}
-                <span className="ml-2 font-mono text-[11px] text-night-muted">{a.team}</span>
-              </>
-            }
-            tech={a.mailingTech}
-            dashed
-          />
-        </div>
+        ))}
       </motion.div>
     </motion.figure>
   )
