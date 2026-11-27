@@ -4,6 +4,7 @@ export type Layer = 'ui' | 'api' | 'db' | 'cloud'
 export type LayerStatus = 'me' | 'team' | 'none'
 
 export type ProjectSlug =
+  | 'pokeradar'
   | 'nomapay'
   | 'ecommerce'
   | 'for-today'
