@@ -1,75 +1,65 @@
-# React + TypeScript + Vite
+# Candelaria Ferrari · Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Del diseño al código, y del código a producción.** Mi portfolio como Full Stack Developer con foco en frontend: proyectos de punta a punta, casos de estudio y cómo trabajo.
 
-Currently, two official plugins are available:
+🔗 **Sitio:** [candelaria-ferrari.netlify.app](https://candelaria-ferrari.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Home del portfolio](docs/preview.webp)
 
-## React Compiler
+| | |
+|---|---|
+| **Stack** | React 19 · TypeScript · Vite · Tailwind CSS v4 |
+| **Rutas** | React Router v7, con las páginas de caso de estudio cargadas bajo demanda |
+| **Idiomas** | Español e inglés con i18next (siempre arranca en español) |
+| **Animaciones** | Motion, respetando `prefers-reduced-motion` |
+| **Deploy** | Netlify, con deploy automático desde `main` |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Qué tiene
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Proyectos de punta a punta.** Cada card marca qué capas hice yo y cuáles en equipo (UI, API, DB, Cloud), con links al deploy y al repo.
+- **Casos de estudio** en `/proyectos/:slug`: qué hice, arquitectura, decisiones y pantallas, con capturas y videos que se amplían en un lightbox.
+- **Diseño propio.** Diseñado en Figma y llevado a código con design tokens en Tailwind v4 (`@theme`): colores, tipografías y espaciados viven en un solo lugar.
+- **Accesibilidad.** HTML semántico, foco visible, navegación por teclado en el lightbox (Esc y flechas) y textos alternativos en las capturas.
+- **Responsive**, pensado para desktop y mobile.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estructura
 
 ```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+src/
+  pages/            → Home, CaseStudy, NotFound
+  components/
+    sections/       → secciones de la home (Hero, Proyectos, Stack, Experiencia, Contacto…)
+    projects/       → cards, proyecto destacado, diagrama de arquitectura
+    ui/             → piezas genéricas (botones, marcos, lightbox, badges)
+    motion/         → variantes y componentes de animación
+    layout/         → navbar y manejo del scroll
+  data/             → proyectos, stack, contacto y capturas de cada caso de estudio
+  i18n/locales/     → todos los textos, en es.ts y en.ts
+  assets/           → foto y capturas de los proyectos
 ```
+
+**Criterio:** el contenido está separado de los componentes. Los datos de cada proyecto viven en `src/data/` y los textos en `src/i18n/locales/`, así que sumar un proyecto no requiere tocar componentes.
+
+## Cómo sumar un proyecto
+
+1. Agregar el slug en `ProjectSlug` (`src/data/types.ts`).
+2. Sumar el proyecto en `src/data/projects.ts`: capas, stack, links y tamaño de la card.
+3. Escribir sus textos en `projects.items` de `es.ts` y `en.ts`.
+4. Si tiene caso de estudio: poner `caseStudy: true`, sumar las capturas en `src/assets/projects/<slug>/`, crear `src/data/media/<slug>.ts` y escribir `caseStudy.items.<slug>` en los dos idiomas.
+
+TypeScript avisa si falta un texto en alguno de los idiomas.
+
+## Correr el proyecto
+
+```bash
+npm install
+npm run dev       # servidor de desarrollo
+npm run build     # chequeo de tipos + build de producción
+npm run lint
+```
+
+## Contacto
+
+📧 [ferrari.candelaria@gmail.com](mailto:ferrari.candelaria@gmail.com) · 💼 [LinkedIn](https://www.linkedin.com/in/candelariaferrari/) · 🐙 [GitHub](https://github.com/candelariaferrari)
